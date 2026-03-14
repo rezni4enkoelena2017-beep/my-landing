@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Елена Боброва | Сайты, приложения, AI-агенты для бизнеса</title>
+<meta name="description" content="Создаю сайты, веб-приложения и AI-агентов для малого и среднего бизнеса — понятную цифровую систему, которая работает на продажи и рост.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ──────────────────────────────────────────────── */
+:root {
+  --bg:        #09090b;
+  --surface:   #111113;
+  --surface-2: #18181b;
+  --border:    rgba(255,255,255,0.08);
+  --accent:    #7c3aed;
+  --accent-2:  #06b6d4;
+  --glow:      rgba(124,58,237,0.35);
+  --text:      #f4f4f5;
+  --muted:     #71717a;
+  --success:   #22c55e;
+  --r:         16px;
+  --r-sm:      10px;
+  --cx:        50vw;
+  --cy:        50vh;
+}
+
+/* ─── RESET ───────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden;background:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+input,textarea{font-family:inherit}
+
+/* ─── TYPOGRAPHY ──────────────────────────────────────────── */
+h1{font-size:clamp(2.4rem,6vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em}
+h2{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+h3{font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:600;line-height:1.3}
+p{font-size:clamp(0.95rem,1.5vw,1.1rem);line-height:1.7;color:var(--muted)}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ─── UTILITIES ───────────────────────────────────────────── */
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+.section{padding:clamp(4rem,8vw,7rem) 0}
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--r)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(124,58,237,0.3);border-radius:999px;padding:5px 12px}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.section-label{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:3rem}
+.section-label.left{align-items:flex-start;text-align:left}
+.section-label p{max-width:600px}
+
+/* ─── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes blink{50%{opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px var(--glow)}50%{box-shadow:0 0 50px var(--glow),0 0 80px rgba(124,58,237,0.2)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up-d1{transition-delay:0.1s}
+.fade-up-d2{transition-delay:0.2s}
+.fade-up-d3{transition-delay:0.3s}
+.fade-up-d4{transition-delay:0.4s}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* ─── BUTTONS ─────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:1rem;border-radius:var(--r-sm);padding:13px 26px;min-height:48px;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+.btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px var(--glow)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:9px 18px;font-size:0.875rem;min-height:38px}
+.btn-lg{padding:16px 36px;font-size:1.1rem;min-height:56px}
+.btn-full{width:100%;justify-content:center}
+
+/* ─── HEADER ──────────────────────────────────────────────── */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all 0.3s}
+header.scrolled{background:rgba(9,9,11,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.1rem;letter-spacing:-0.01em}
+.logo span:first-child{background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo span:last-child{color:var(--muted)}
+nav{display:flex;align-items:center;gap:32px}
+nav a{font-size:0.875rem;font-weight:500;color:var(--muted);transition:color 0.2s}
+nav a:hover,nav a.active{color:var(--text)}
+.burger{display:none;flex-direction:column;gap:5px;padding:6px;width:36px}
+.burger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;flex-direction:column;justify-content:center;align-items:center;gap:36px;padding:80px 24px 24px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:1.75rem;font-weight:700;color:var(--text)}
+.mobile-cta{position:fixed;bottom:0;left:0;right:0;z-index:98;display:none;padding:12px 16px;background:rgba(9,9,11,0.95);border-top:1px solid var(--border);backdrop-filter:blur(10px)}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:64px}
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(124,58,237,0.22) 1px,transparent 1px);background-size:28px 28px}
+.spotlight{position:absolute;inset:0;background:radial-gradient(600px circle at var(--cx) var(--cy),rgba(124,58,237,0.07),transparent 40%);pointer-events:none;transition:background 0.1s}
+.glow-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.glow-blob-1{width:500px;height:500px;top:10%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(124,58,237,0.15),transparent 70%)}
+.glow-blob-2{width:350px;height:350px;bottom:15%;right:-5%;background:radial-gradient(circle,rgba(6,182,212,0.1),transparent 70%)}
+.hero-inner{position:relative;z-index:2;width:100%;text-align:center;max-width:900px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);border:1px solid rgba(124,58,237,0.3);border-radius:999px;padding:6px 14px;margin-bottom:2rem}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
+.hero-h1{margin-bottom:1.2rem}
+.typewriter-line{display:block;min-height:1.2em}
+.cursor::after{content:'|';animation:blink 1s step-end infinite;color:var(--accent);margin-left:2px}
+.hero-sub{font-family:'JetBrains Mono',monospace;font-size:clamp(0.9rem,1.5vw,1.05rem);color:var(--muted);margin-bottom:2rem}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.hero-stat-val{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;line-height:1}
+.hero-stat-val.gc{background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stat-lbl{font-size:0.78rem;color:var(--muted);margin-top:4px}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.4}
+.scroll-hint span{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted)}
+.scroll-line{width:1px;height:32px;background:linear-gradient(var(--accent),transparent);animation:pulse 1.5s ease-in-out infinite}
+
+/* ─── SOCIAL PROOF ────────────────────────────────────────── */
+#proof{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 0;overflow:hidden}
+.proof-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:2.5rem}
+.proof-stat{background:var(--surface);padding:1.5rem;text-align:center}
+.proof-stat-val{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1;margin-bottom:6px}
+.proof-stat-lbl{font-size:0.8rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.proof-stat-sub{font-size:0.72rem;color:var(--muted)}
+.marquee-wrap{overflow:hidden;position:relative}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.marquee-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;color:var(--muted);opacity:0.5;padding:0 2.5rem;white-space:nowrap;transition:opacity 0.2s}
+.marquee-item:hover{opacity:0.85}
+.proof-label{text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:1rem}
+
+/* ─── SERVICES ────────────────────────────────────────────── */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{padding:2rem;transition:all 0.3s cubic-bezier(0.22,1,0.36,1);cursor:default}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(124,58,237,0.4);box-shadow:0 20px 60px rgba(124,58,237,0.15)}
+.service-card.featured{border-color:rgba(124,58,237,0.35);box-shadow:0 0 40px rgba(124,58,237,0.12);grid-column:span 2}
+.service-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+.service-card h3{margin-bottom:0.75rem;color:var(--text)}
+.service-card p{font-size:0.9rem;margin-bottom:1.25rem}
+.service-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.service-deadline{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:3px 8px}
+.tech-tag{font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:3px 8px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);border-radius:4px;color:var(--accent)}
+.service-featured-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;padding:3px 10px;margin-bottom:0.75rem;width:fit-content}
+
+/* ─── PORTFOLIO ───────────────────────────────────────────── */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+.filter-btn{font-size:0.875rem;font-weight:500;padding:8px 18px;border-radius:999px;border:1px solid var(--border);color:var(--muted);transition:all 0.2s;background:transparent}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{padding:1.5rem;transition:all 0.35s cubic-bezier(0.22,1,0.36,1);transform-style:preserve-3d}
+.project-card:hover{transform:translateY(-6px);border-color:rgba(124,58,237,0.35);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.project-card.hidden{display:none}
+.project-thumb{height:160px;border-radius:10px;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.project-category{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.project-card h3{font-size:1rem;margin-bottom:0.5rem;color:var(--text)}
+.project-metrics{display:flex;gap:6px;flex-wrap:wrap;margin:0.75rem 0}
+.metric-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:3px 8px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:4px;color:var(--accent)}
+.project-footer{display:flex;gap:8px;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+
+/* ─── AI DEMO ─────────────────────────────────────────────── */
+#ai-demo{background:var(--surface)}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.terminal{border:1px solid var(--accent);border-radius:var(--r);overflow:hidden;box-shadow:0 0 40px rgba(124,58,237,0.2)}
+.terminal-header{background:rgba(124,58,237,0.1);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(124,58,237,0.2)}
+.terminal-title{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent)}
+.terminal-dots{display:flex;gap:6px}
+.terminal-dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.terminal-dot:nth-child(1){background:#ef4444}
+.terminal-dot:nth-child(2){background:#f59e0b}
+.terminal-dot:nth-child(3){background:#22c55e}
+.terminal-body{padding:1rem;min-height:300px;display:flex;flex-direction:column;gap:12px;font-family:'JetBrains Mono',monospace;font-size:0.82rem}
+.chat-msg{display:flex;flex-direction:column;gap:4px;max-width:85%}
+.chat-msg.bot{align-self:flex-start}
+.chat-msg.user{align-self:flex-end}
+.chat-bubble{padding:10px 14px;border-radius:12px;line-height:1.5}
+.chat-bubble.bot{background:rgba(255,255,255,0.06);color:var(--text)}
+.chat-bubble.user{background:var(--accent);color:#fff}
+.chat-time{font-size:0.65rem;color:var(--muted)}
+.terminal-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.terminal-input input{flex:1;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:0.8rem;outline:none;transition:border-color 0.2s}
+.terminal-input input:focus{border-color:var(--accent)}
+.terminal-input button{padding:8px 14px;border-radius:8px;background:var(--accent);color:#fff;font-size:0.8rem;font-weight:600}
+.quick-btns{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 12px}
+.quick-btn{font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:5px 10px;border-radius:6px;border:1px solid rgba(124,58,237,0.3);color:var(--accent);background:transparent;cursor:pointer;transition:all 0.2s}
+.quick-btn:hover{background:rgba(124,58,237,0.15)}
+.compare-table{width:100%;border-collapse:collapse;margin-bottom:2rem}
+.compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:0.875rem}
+.compare-table th{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.compare-table td:first-child{color:var(--muted)}
+.compare-table td:nth-child(2){color:var(--muted)}
+.compare-table td:nth-child(3){color:var(--success);font-weight:600}
+.compare-table tr:last-child td{border-bottom:none}
+.roi-calc{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
+.roi-calc h4{font-size:0.9rem;color:var(--text);margin-bottom:1.25rem;font-weight:600}
+.roi-row{margin-bottom:1rem}
+.roi-row label{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted);margin-bottom:6px}
+.roi-row label span{color:var(--accent);font-weight:600;font-family:'JetBrains Mono',monospace}
+input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.roi-result{margin-top:1.25rem;padding:1rem;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:10px;font-size:0.8rem;line-height:1.8;font-family:'JetBrains Mono',monospace;color:var(--text)}
+.roi-result strong{color:var(--accent)}
+
+/* ─── PROCESS ─────────────────────────────────────────────── */
+.process-list{display:flex;flex-direction:column;gap:16px;position:relative}
+.process-list::before{content:'';position:absolute;left:32px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--accent-2),transparent)}
+.process-item{display:flex;gap:20px;align-items:flex-start}
+.process-dot{flex-shrink:0;width:64px;height:64px;border-radius:18px;border:1px solid rgba(124,58,237,0.3);background:rgba(124,58,237,0.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;position:relative;z-index:1}
+.process-num{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.process-content{flex:1;padding:1.25rem;transition:border-color 0.3s}
+.process-content:hover{border-color:rgba(124,58,237,0.3)}
+.process-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:0.5rem;flex-wrap:wrap}
+.process-title{font-size:1rem;font-weight:700;color:var(--text)}
+.process-time{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:3px 10px;white-space:nowrap}
+
+/* ─── TESTIMONIALS ────────────────────────────────────────── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.testimonial-card{padding:2rem;transition:all 0.3s}
+.testimonial-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,0.3)}
+.quote-mark{font-size:2.5rem;line-height:1;color:var(--accent);opacity:0.3;font-family:Georgia,serif;margin-bottom:0.5rem}
+.testimonial-text{font-size:0.9rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.5rem}
+.testimonial-author{display:flex;align-items:center;gap:12px;padding-top:1rem;border-top:1px solid var(--border)}
+.author-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;flex-shrink:0}
+.author-name{font-size:0.875rem;font-weight:600;color:var(--text)}
+.author-role{font-size:0.75rem;color:var(--muted)}
+.stars{display:flex;gap:2px;margin-left:auto}
+.stars span{color:var(--accent);font-size:0.8rem}
+.testimonials-placeholder{text-align:center;padding:3rem;border:1px dashed rgba(255,255,255,0.1);border-radius:var(--r)}
+
+/* ─── ABOUT ───────────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:2fr 3fr;gap:60px;align-items:center}
+.about-photo-wrap{position:relative;width:fit-content}
+.about-photo{width:280px;height:320px;border-radius:24px;object-fit:cover;border:1px solid var(--border);box-shadow:0 0 60px rgba(124,58,237,0.2)}
+.about-photo-placeholder{width:280px;height:320px;border-radius:24px;background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(6,182,212,0.2));border:1px solid rgba(124,58,237,0.3);display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 0 60px rgba(124,58,237,0.15)}
+.about-badge{position:absolute;bottom:-12px;right:-12px;background:var(--surface-2);border:1px solid rgba(124,58,237,0.35);border-radius:999px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--accent);white-space:nowrap}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:1.5rem}
+.about-stat{text-align:center;padding:1rem;background:var(--surface-2);border:1px solid var(--border);border-radius:12px}
+.about-stat-val{font-size:1.4rem;font-weight:800;line-height:1;margin-bottom:4px}
+.about-stat-lbl{font-size:0.7rem;color:var(--muted)}
+.about-text{display:flex;flex-direction:column;gap:16px;font-size:0.95rem;color:var(--muted);line-height:1.75}
+.stack-group{margin-top:1.25rem}
+.stack-group-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.stack-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.about-links{display:flex;gap:12px;margin-top:0.5rem}
+.about-link{display:flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:8px 14px;transition:all 0.2s}
+.about-link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ─── PRICING ─────────────────────────────────────────────── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan-card{padding:2rem;display:flex;flex-direction:column;gap:0;transition:all 0.3s;position:relative}
+.plan-card:hover{transform:translateY(-4px)}
+.plan-card.popular{border-color:rgba(124,58,237,0.4);box-shadow:0 0 50px rgba(124,58,237,0.15)}
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-size:0.72rem;font-weight:700;border-radius:999px;padding:4px 14px;white-space:nowrap}
+.plan-name{font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
+.plan-price{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:var(--text);line-height:1;margin-bottom:4px}
+.plan-period{font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem}
+.plan-desc{font-size:0.875rem;color:var(--muted);line-height:1.6;padding-bottom:1.25rem;border-bottom:1px solid var(--border);margin-bottom:1.25rem}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;flex:1}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:0.875rem;color:var(--text)}
+.check{color:var(--success);font-size:0.9rem;flex-shrink:0;margin-top:1px}
+.pricing-note{text-align:center;margin-top:1.5rem;font-size:0.875rem;color:var(--muted)}
+.pricing-note a{color:var(--accent)}
+
+/* ─── FAQ ─────────────────────────────────────────────────── */
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto}
+.faq-item{border-radius:var(--r);overflow:hidden;transition:border-color 0.2s}
+.faq-item.open{border-color:rgba(124,58,237,0.3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 1.5rem;cursor:pointer;user-select:none;width:100%;text-align:left}
+.faq-q-text{font-weight:600;font-size:0.95rem;color:var(--text)}
+.faq-arrow{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.25s,border-color 0.2s;color:var(--accent);font-size:0.75rem}
+.faq-item.open .faq-arrow{transform:rotate(180deg);border-color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.22,1,0.36,1)}
+.faq-a-inner{padding:0 1.5rem 1.25rem;font-size:0.9rem;color:var(--muted);line-height:1.75;border-top:1px solid var(--border)}
+
+/* ─── CONTACT ─────────────────────────────────────────────── */
+#contact{position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(124,58,237,0.12),transparent 70%);pointer-events:none}
+.contact-inner{max-width:680px;margin:0 auto;text-align:center}
+.contact-card{padding:3rem;margin:2rem 0;border-color:rgba(124,58,237,0.2)}
+.contact-emoji{font-size:4rem;margin-bottom:1.25rem;display:block}
+.contact-card h3{font-size:1.5rem;color:var(--text);margin-bottom:0.5rem}
+.contact-card p{margin-bottom:2rem}
+.contact-handle{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--muted);margin-top:1rem}
+.guarantees{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.guarantee{padding:1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.guarantee span:first-child{font-size:1.5rem}
+.guarantee span:last-child{font-size:0.75rem;color:var(--muted);line-height:1.4}
+
+/* ─── FORM ────────────────────────────────────────────────── */
+.form-divider{display:flex;align-items:center;gap:12px;margin:1.5rem 0;color:var(--muted);font-size:0.8rem}
+.form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.contact-form{text-align:left;display:flex;flex-direction:column;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:0.82rem;font-weight:500;color:var(--muted)}
+.form-group input,.form-group textarea{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:0.9rem;outline:none;transition:border-color 0.2s;resize:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group input.error,.form-group textarea.error{border-color:#ef4444}
+.form-privacy{font-size:0.75rem;color:var(--muted);text-align:center}
+.form-success{display:none;text-align:center;padding:2rem;font-size:0.95rem;color:var(--success)}
+.form-success .checkmark{font-size:3rem;margin-bottom:1rem;display:block}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer{border-top:1px solid var(--border);padding:2.5rem 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-brand p{font-size:0.8rem;color:var(--muted);margin-top:4px}
+.footer-nav{display:flex;gap:24px;flex-wrap:wrap}
+.footer-nav a{font-size:0.875rem;color:var(--muted);transition:color 0.2s}
+.footer-nav a:hover{color:var(--text)}
+.footer-right{text-align:right}
+.footer-tg{font-family:'JetBrains Mono',monospace;font-size:0.875rem;font-weight:600;color:var(--accent);display:block;margin-bottom:4px}
+.footer-copy{font-size:0.75rem;color:var(--muted)}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media(max-width:1024px){
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .service-card.featured{grid-column:span 2}
+  .demo-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-photo-placeholder{width:100%;height:260px;font-size:5rem}
+}
+@media(max-width:768px){
+  nav,header .btn{display:none}
+  .burger{display:flex}
+  .mobile-cta{display:block}
+  .bento{grid-template-columns:1fr}
+  .service-card.featured{grid-column:span 1}
+  .portfolio-grid{grid-template-columns:1fr}
+  .proof-stats{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .guarantees{grid-template-columns:repeat(2,1fr)}
+  .about-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{gap:24px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-right{text-align:center}
+  .footer-nav{justify-content:center}
+}
+@media(max-width:480px){
+  .proof-stats{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .about-stats{grid-template-columns:repeat(2,1fr)}
+  .guarantees{grid-template-columns:1fr 1fr}
+}
+
+/* ─── WOW LAYER ───────────────────────────────────────────── */
+
+/* Scroll progress bar */
+#pgbar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent));background-size:200% 100%;animation:gradShift 3s linear infinite;z-index:200;transition:width 0.05s linear}
+
+/* Animated gradient headline */
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.animated-grad{background:linear-gradient(135deg,#7c3aed,#06b6d4,#a855f7,#0ea5e9,#7c3aed);background-size:300% 300%;animation:gradShift 5s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Floating hero blobs */
+@keyframes float1{0%,100%{transform:translateX(-50%) translateY(0) scale(1)}50%{transform:translateX(-47%) translateY(-28px) scale(1.06)}}
+@keyframes float2{0%,100%{transform:translateY(0) scale(1)}60%{transform:translateY(-22px) scale(1.1)}}
+.glow-blob-1{animation:float1 9s ease-in-out infinite}
+.glow-blob-2{animation:float2 11s ease-in-out infinite 1s}
+
+/* Shimmer sweep on glass cards */
+.glass{position:relative;overflow:hidden}
+.glass::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);transform:skewX(-20deg);transition:left 0.7s ease;pointer-events:none;z-index:1}
+.glass:hover::before{left:150%}
+
+/* Enhanced button glow + ripple */
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.12),transparent 60%);opacity:0;transition:opacity 0.3s}
+.btn-primary:hover::after{opacity:1}
+
+/* Fade-up — stronger spring */
+.fade-up{transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1),transform 0.75s cubic-bezier(0.22,1,0.36,1)}
+.fade-up-d1{transition-delay:0.1s}.fade-up-d2{transition-delay:0.2s}.fade-up-d3{transition-delay:0.3s}.fade-up-d4{transition-delay:0.4s}
+
+/* Word-by-word reveal */
+.reveal-word{display:inline-block;opacity:0;transform:translateY(22px);transition:opacity 0.55s cubic-bezier(0.22,1,0.36,1),transform 0.55s cubic-bezier(0.22,1,0.36,1)}
+.reveal-word.vis{opacity:1;transform:translateY(0)}
+
+/* Side dot navigation */
+#sidenav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:10px}
+#sidenav a{width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);display:block;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);position:relative}
+#sidenav a::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);white-space:nowrap;opacity:0;transition:opacity 0.2s;pointer-events:none}
+#sidenav a:hover::after{opacity:1}
+#sidenav a.on{background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px var(--glow);transform:scale(1.5)}
+@media(max-width:1200px){#sidenav{display:none}}
+
+/* Card hover — richer lift */
+.service-card:hover{box-shadow:0 28px 80px rgba(124,58,237,0.22),0 8px 20px rgba(0,0,0,0.5)!important}
+.project-card:hover{box-shadow:0 28px 80px rgba(124,58,237,0.18),0 8px 20px rgba(0,0,0,0.5)!important}
+.plan-card:hover{box-shadow:0 24px 60px rgba(124,58,237,0.2)!important}
+
+/* Noise grain overlay */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Pulse ring on hero badge dot */
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(124,58,237,0.6)}70%{box-shadow:0 0 0 10px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+.hero-badge-dot{animation:ring 2s ease-out infinite!important}
+
+/* Section transition: alternate dark/slightly lighter */
+section:nth-child(even){background:var(--surface)}
+
+/* Hover scale on tech tags */
+.tech-tag,.metric-tag{transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1)}
+.tech-tag:hover,.metric-tag:hover{transform:scale(1.06);background:rgba(124,58,237,0.22)}
+
+/* Glow border pulse on featured card */
+@keyframes glowBorder{0%,100%{box-shadow:0 0 30px rgba(124,58,237,0.15)}50%{box-shadow:0 0 60px rgba(124,58,237,0.3),0 0 100px rgba(6,182,212,0.1)}}
+.service-card.featured{animation:glowBorder 3s ease-in-out infinite}
+
+/* Hero h1 line underline on the static text */
+.hero-static{position:relative;display:inline}
+
+/* ─── BACK TO TOP ─────────────────────────────────────────── */
+#toTop{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:1.25rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;opacity:0;transform:translateY(20px) scale(0.7);transition:opacity 0.4s,transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;box-shadow:0 4px 24px var(--glow);pointer-events:none}
+#toTop.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+#toTop:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 10px 36px var(--glow)}
+#toTop:active{transform:scale(0.95)}
+@media(max-width:768px){#toTop{bottom:80px;right:14px;width:40px;height:40px;font-size:1rem}}
+
+/* ─── FORM SUCCESS ANIMATION ──────────────────────────────── */
+@keyframes successPop{0%{opacity:0;transform:scale(0.6) translateY(24px)}60%{transform:scale(1.06) translateY(-4px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes checkDraw{0%{opacity:0;transform:scale(0) rotate(-20deg)}70%{transform:scale(1.2) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.form-success.shown{animation:successPop 0.65s cubic-bezier(0.34,1.56,0.64,1) both}
+.form-success.shown .checkmark{display:inline-block;animation:checkDraw 0.5s 0.2s cubic-bezier(0.34,1.56,0.64,1) both}
+
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="pgbar"></div>
+
+<!-- BACK TO TOP -->
+<button id="toTop" aria-label="Наверх" title="Наверх">↑</button>
+
+<!-- SIDE DOT NAV -->
+<nav id="sidenav">
+  <a href="#hero"      data-label="Главная"></a>
+  <a href="#proof"     data-label="Результаты"></a>
+  <a href="#services"  data-label="Услуги"></a>
+  <a href="#portfolio" data-label="Портфолио"></a>
+  <a href="#ai-demo"   data-label="AI-демо"></a>
+  <a href="#process"   data-label="Процесс"></a>
+  <a href="#about"     data-label="Обо мне"></a>
+  <a href="#pricing"   data-label="Цены"></a>
+  <a href="#faq"       data-label="FAQ"></a>
+  <a href="#contact"   data-label="Контакт"></a>
+</nav>
+
+<!-- SPOTLIGHT -->
+<div id="spotlight" style="position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(600px circle at var(--cx) var(--cy),rgba(124,58,237,0.06),transparent 40%)"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#hero" class="logo"><span>ЕБ</span><span> Боброва</span></a>
+      <nav>
+        <a href="#services">Услуги</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#process">Процесс</a>
+        <a href="#contact">Контакт</a>
+      </nav>
+      <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-sm">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z"/></svg>
+        Написать
+      </a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" class="mobile-link">Услуги</a>
+  <a href="#portfolio" class="mobile-link">Портфолио</a>
+  <a href="#process" class="mobile-link">Процесс</a>
+  <a href="#contact" class="mobile-link">Контакт</a>
+  <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-lg" style="margin-top:16px">Написать в Telegram</a>
+</div>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta">
+  <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-full">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z"/></svg>
+    Написать в Telegram
+  </a>
+</div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="dot-grid"></div>
+  <div class="spotlight" id="heroSpotlight"></div>
+  <div class="glow-blob glow-blob-1"></div>
+  <div class="glow-blob glow-blob-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge fade-up">
+        <span class="hero-badge-dot"></span>
+        Открыта для новых проектов
+      </div>
+      <h1 class="hero-h1 fade-up fade-up-d1">
+        Создаю <span class="gradient-text"><span id="typewriter" class="cursor"></span></span>
+        <br>которые работают на ваш бизнес
+      </h1>
+      <p class="hero-sub mono fade-up fade-up-d2">Сайты · Приложения · AI-агенты для автоматизации</p>
+      <div class="hero-btns fade-up fade-up-d3">
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-lg" style="animation:glow 3s ease-in-out infinite">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z"/></svg>
+          Обсудить проект
+        </a>
+        <a href="#portfolio" class="btn btn-ghost btn-lg">Смотреть работы ↓</a>
+      </div>
+      <div class="hero-stats fade-up fade-up-d4">
+        <div><div class="hero-stat-val gc">40+</div><div class="hero-stat-lbl">проектов сдано</div></div>
+        <div style="color:var(--border);font-size:2rem;font-weight:100">·</div>
+        <div><div class="hero-stat-val gc">5 лет</div><div class="hero-stat-lbl">опыта</div></div>
+        <div style="color:var(--border);font-size:2rem;font-weight:100">·</div>
+        <div><div class="hero-stat-val gc">×3–4</div><div class="hero-stat-lbl">рост конверсии</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ SOCIAL PROOF ════════════════════════════════════════ -->
+<section id="proof">
+  <div class="container">
+    <div class="proof-stats fade-up">
+      <div class="proof-stat"><div class="proof-stat-val gradient-text">40+</div><div class="proof-stat-lbl">Проектов</div><div class="proof-stat-sub">сдано в срок</div></div>
+      <div class="proof-stat"><div class="proof-stat-val gradient-text">98%</div><div class="proof-stat-lbl">Клиентов</div><div class="proof-stat-sub">возвращаются снова</div></div>
+      <div class="proof-stat"><div class="proof-stat-val gradient-text">×3</div><div class="proof-stat-lbl">Рост конверсии</div><div class="proof-stat-sub">у клиентов в среднем</div></div>
+      <div class="proof-stat"><div class="proof-stat-val gradient-text">24 ч</div><div class="proof-stat-lbl">Поддержка</div><div class="proof-stat-sub">после сдачи проекта</div></div>
+    </div>
+    <div class="marquee-wrap fade-up">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item">Next.js</span><span class="marquee-item">React</span><span class="marquee-item">TypeScript</span><span class="marquee-item">GPT-4o</span><span class="marquee-item">Claude</span><span class="marquee-item">LangChain</span><span class="marquee-item">n8n</span><span class="marquee-item">Supabase</span><span class="marquee-item">Vercel</span><span class="marquee-item">Telegram Bot</span><span class="marquee-item">Node.js</span><span class="marquee-item">Docker</span>
+        <span class="marquee-item">Next.js</span><span class="marquee-item">React</span><span class="marquee-item">TypeScript</span><span class="marquee-item">GPT-4o</span><span class="marquee-item">Claude</span><span class="marquee-item">LangChain</span><span class="marquee-item">n8n</span><span class="marquee-item">Supabase</span><span class="marquee-item">Vercel</span><span class="marquee-item">Telegram Bot</span><span class="marquee-item">Node.js</span><span class="marquee-item">Docker</span>
+      </div>
+    </div>
+    <p class="proof-label fade-up">Технологии, с которыми я работаю</p>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ════════════════════════════════════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">01. Услуги</span>
+      <h2>Что я делаю</h2>
+      <p>Три направления. Один специалист. Без координации между подрядчиками.</p>
+    </div>
+    <div class="bento">
+      <div class="glass service-card fade-up">
+        <span class="service-icon">🌐</span>
+        <h3>Сайт, который продаёт</h3>
+        <p>Не просто красивая страница — инструмент для привлечения клиентов. Лендинги, корпоративные сайты, интернет-магазины. Быстро, SEO-оптимизировано, с аналитикой с первого дня.</p>
+        <div class="service-meta">
+          <span class="service-deadline">от 1 недели</span>
+          <span class="tech-tag">Next.js</span><span class="tech-tag">React</span><span class="tech-tag">Tailwind</span>
+        </div>
+        <a href="#portfolio" class="btn btn-ghost btn-sm">Смотреть примеры →</a>
+      </div>
+      <div class="glass service-card fade-up fade-up-d1">
+        <span class="service-icon">⚡</span>
+        <h3>Приложение под вашу задачу</h3>
+        <p>Когда готовые SaaS-решения не подходят. MVP за 2–3 недели, полноценный продукт — за 2 месяца. От идеи до продакшена.</p>
+        <div class="service-meta">
+          <span class="service-deadline">от 2 недель (MVP)</span>
+          <span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Supabase</span>
+        </div>
+        <a href="#portfolio" class="btn btn-ghost btn-sm">Смотреть примеры →</a>
+      </div>
+      <div class="glass service-card featured fade-up fade-up-d2">
+        <div class="service-featured-badge">✦ Популярно · AI-направление</div>
+        <span class="service-icon">🤖</span>
+        <h3>AI-агент вместо сотрудника</h3>
+        <p>Ваш цифровой сотрудник: отвечает клиентам, квалифицирует заявки, обрабатывает данные — 24/7, без выходных и больничных. Один агент заменяет 20–40 часов ручной работы в неделю.</p>
+        <div class="service-meta">
+          <span class="service-deadline">от 3 дней</span>
+          <span class="tech-tag">GPT-4o</span><span class="tech-tag">Claude</span><span class="tech-tag">LangChain</span><span class="tech-tag">n8n</span><span class="tech-tag">Telegram Bot</span>
+        </div>
+        <a href="#ai-demo" class="btn btn-primary btn-sm">Попробовать демо →</a>
+      </div>
+      <div class="glass service-card fade-up fade-up-d3">
+        <span class="service-icon">💬</span>
+        <h3>Не знаете с чего начать?</h3>
+        <p>30-минутный разбор вашей задачи. Честно скажу: что реализуемо, сколько займёт и сколько стоит. Бесплатно.</p>
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-ghost btn-sm" style="margin-top:auto">Записаться →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ════════════════════════════════════════════ -->
+<section id="portfolio" class="section" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">02. Портфолио</span>
+      <h2>Избранные проекты</h2>
+      <p>Не скриншоты — результаты с измеримым эффектом для бизнеса.</p>
+    </div>
+    <div class="filter-bar fade-up">
+      <button class="filter-btn active" data-filter="all">Все</button>
+      <button class="filter-btn" data-filter="site">Сайты</button>
+      <button class="filter-btn" data-filter="app">Приложения</button>
+      <button class="filter-btn" data-filter="ai">AI-агенты</button>
+    </div>
+    <div class="portfolio-grid">
+      <div class="glass project-card" data-cat="ai">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(6,182,212,0.15))">🤖</div>
+        <div class="project-category">AI-агент</div>
+        <h3>AI-консьерж для ресторана</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">Telegram-бот принимает бронирования и отвечает на вопросы 24/7. Сократил нагрузку на администратора на 70%.</p>
+        <div class="project-metrics"><span class="metric-tag">+70% автоматизации</span><span class="metric-tag">−3 ч/день рутины</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">GPT-4o</span><span class="tech-tag">Telegram</span><span class="tech-tag">n8n</span>
+        </div>
+      </div>
+      <div class="glass project-card" data-cat="site">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(6,182,212,0.25),rgba(124,58,237,0.15))">🌐</div>
+        <div class="project-category">Лендинг</div>
+        <h3>Лендинг для IT-стартапа</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">Конвертирующая страница для B2B SaaS. Конверсия выросла с 1.2% до 4.8%.</p>
+        <div class="project-metrics"><span class="metric-tag">×4 конверсия</span><span class="metric-tag">LCP 1.1s</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">Next.js</span><span class="tech-tag">Framer Motion</span>
+        </div>
+      </div>
+      <div class="glass project-card" data-cat="app">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(124,58,237,0.15))">⚡</div>
+        <div class="project-category">Приложение</div>
+        <h3>CRM для юридической фирмы</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">Внутренняя система учёта клиентов и документов. Заменила Excel, сэкономила 5 ч в неделю.</p>
+        <div class="project-metrics"><span class="metric-tag">−5 ч/нед рутины</span><span class="metric-tag">100% команды</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="glass project-card" data-cat="site">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(6,182,212,0.15))">🛍️</div>
+        <div class="project-category">Интернет-магазин</div>
+        <h3>E-commerce магазин одежды</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">Кастомная корзина и платёжный шлюз. +40% онлайн-продаж за первый месяц.</p>
+        <div class="project-metrics"><span class="metric-tag">+40% продаж</span><span class="metric-tag">Lighthouse 98</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">Next.js</span><span class="tech-tag">Stripe</span><span class="tech-tag">Sanity</span>
+        </div>
+      </div>
+      <div class="glass project-card" data-cat="ai">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(239,68,68,0.1))">🏠</div>
+        <div class="project-category">AI-агент</div>
+        <h3>Лид-бот для агентства недвижимости</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">Бот квалифицирует клиентов и передаёт горячие лиды брокеру. ×3 рост обработки входящих.</p>
+        <div class="project-metrics"><span class="metric-tag">×3 обработка лидов</span><span class="metric-tag">80% квалификация</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">LLM</span><span class="tech-tag">Telegram</span><span class="tech-tag">CRM</span>
+        </div>
+      </div>
+      <div class="glass project-card" data-cat="app">
+        <div class="project-thumb" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(34,197,94,0.15))">📚</div>
+        <div class="project-category">SaaS-платформа</div>
+        <h3>Платформа для онлайн-курсов</h3>
+        <p style="font-size:0.85rem;color:var(--muted)">MVP за 3 недели: личный кабинет, видеоуроки, тесты, платёжная интеграция.</p>
+        <div class="project-metrics"><span class="metric-tag">3 нед до запуска</span><span class="metric-tag">200+ первых юзеров</span></div>
+        <div class="project-footer">
+          <span class="tech-tag">React</span><span class="tech-tag">Supabase</span><span class="tech-tag">Stripe</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+      <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-ghost">Хочу такой же результат →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI DEMO ══════════════════════════════════════════════ -->
+<section id="ai-demo" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">03. AI Demo</span>
+      <h2>Попробуйте прямо сейчас</h2>
+      <p>Это AI-агент. Именно такого я создам для вашего бизнеса — отвечает клиентам 24/7, квалифицирует заявки, экономит часы ручного труда.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="fade-up">
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-title">AI-ассистент Елены Бобровой</span>
+            <div class="terminal-dots"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span></div>
+          </div>
+          <div class="terminal-body" id="chatBody">
+            <div class="chat-msg bot">
+              <div class="chat-bubble bot">Привет! Я могу рассказать об услугах, кейсах и стоимости. Что вас интересует?</div>
+              <span class="chat-time">только что</span>
+            </div>
+          </div>
+          <div class="quick-btns">
+            <button class="quick-btn" onclick="sendQuick('Сколько стоит лендинг?')">Сколько стоит лендинг?</button>
+            <button class="quick-btn" onclick="sendQuick('Что такое AI-агент?')">Что такое AI-агент?</button>
+            <button class="quick-btn" onclick="sendQuick('Как быстро сделаете?')">Как быстро?</button>
+          </div>
+          <div class="terminal-input">
+            <input type="text" id="chatInput" placeholder="Введите вопрос..." onkeydown="if(event.key==='Enter')sendChat()">
+            <button onclick="sendChat()">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up fade-up-d1" style="display:flex;flex-direction:column;gap:20px">
+        <table class="compare-table glass" style="border-radius:var(--r);overflow:hidden">
+          <thead>
+            <tr><th></th><th>Менеджер</th><th>AI-агент</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Время ответа</td><td>15 мин – 4 ч</td><td style="color:var(--success)">3 секунды</td></tr>
+            <tr><td>Рабочие часы</td><td>9:00 – 18:00</td><td style="color:var(--success)">24/7/365</td></tr>
+            <tr><td>Стоимость/мес</td><td>50–100 т.р.</td><td style="color:var(--success)">5–15 т.р.</td></tr>
+            <tr><td>100 заявок сразу</td><td style="color:#ef4444">✗</td><td style="color:var(--success)">✓</td></tr>
+            <tr><td>Болеет/уходит</td><td style="color:#ef4444">✓</td><td style="color:var(--success)">✗</td></tr>
+          </tbody>
+        </table>
+        <div class="roi-calc">
+          <h4>ROI-калькулятор</h4>
+          <div class="roi-row">
+            <label>Заявок в месяц <span id="rLeadsVal">100</span></label>
+            <input type="range" min="20" max="500" value="100" id="rLeads" oninput="calcRoi()">
+          </div>
+          <div class="roi-row">
+            <label>Средний чек <span id="rCheckVal">20 000 ₽</span></label>
+            <input type="range" min="5000" max="200000" step="5000" value="20000" id="rCheck" oninput="calcRoi()">
+          </div>
+          <div class="roi-result" id="roiResult">
+            → Теряете ~<strong id="rLoss">0 ₽</strong>/мес из-за медленных ответов<br>
+            → AI-агент: <strong>от 8 000 ₽/мес</strong><br>
+            → Окупаемость: <strong id="rPayback">—</strong>
+          </div>
+          <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-full" style="margin-top:12px">Хочу такого агента →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ══════════════════════════════════════════════ -->
+<section id="process" class="section" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">04. Процесс</span>
+      <h2>Как мы работаем</h2>
+      <p>Понятный процесс. Никакого хаоса. Вы всегда знаете, что происходит.</p>
+    </div>
+    <div class="process-list">
+      <div class="process-item fade-up">
+        <div class="process-dot">💬<span class="process-num">1</span></div>
+        <div class="glass process-content">
+          <div class="process-header"><span class="process-title">Консультация</span><span class="process-time">День 1</span></div>
+          <p style="font-size:0.875rem">30 минут, бесплатно. Разбираем задачу и цели без обязательств. Никаких брифов на 5 страниц.</p>
+        </div>
+      </div>
+      <div class="process-item fade-up fade-up-d1">
+        <div class="process-dot">📋<span class="process-num">2</span></div>
+        <div class="glass process-content">
+          <div class="process-header"><span class="process-title">Предложение за 24 часа</span><span class="process-time">День 2</span></div>
+          <p style="font-size:0.875rem">ТЗ + смета + <strong style="color:var(--text)">фиксированная цена в договоре</strong>. Никаких сюрпризов после старта.</p>
+        </div>
+      </div>
+      <div class="process-item fade-up fade-up-d2">
+        <div class="process-dot">🎨<span class="process-num">3</span></div>
+        <div class="glass process-content">
+          <div class="process-header"><span class="process-title">Дизайн и прототип</span><span class="process-time">День 3–5</span></div>
+          <p style="font-size:0.875rem">Показываю макет до начала разработки. Согласуем всё до последнего пикселя.</p>
+        </div>
+      </div>
+      <div class="process-item fade-up fade-up-d3">
+        <div class="process-dot">⚡<span class="process-num">4</span></div>
+        <div class="glass process-content">
+          <div class="process-header"><span class="process-title">Разработка</span><span class="process-time">День 5–14</span></div>
+          <p style="font-size:0.875rem">Пишу код, настраиваю интеграции, тестирую. Прогресс виден каждый день. <strong style="color:var(--text)">Все доступы передаются вам.</strong></p>
+        </div>
+      </div>
+      <div class="process-item fade-up fade-up-d4">
+        <div class="process-dot">🚀<span class="process-num">5</span></div>
+        <div class="glass process-content">
+          <div class="process-header"><span class="process-title">Сдача и поддержка</span><span class="process-time">День 14+</span></div>
+          <p style="font-size:0.875rem">Деплой, передача доступов, обучение работе. <strong style="color:var(--text)">30 дней поддержки бесплатно</strong> — не бросаю после запуска.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ════════════════════════════════════════ -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">05. Отзывы</span>
+      <h2>Говорят клиенты</h2>
+    </div>
+    <div class="testimonials-placeholder glass fade-up">
+      <div style="font-size:3rem;margin-bottom:1rem">💬</div>
+      <p style="margin-bottom:1.5rem">Отзывы появятся здесь скоро. Если вы уже работали со мной — буду рада вашему мнению.</p>
+      <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-ghost">Оставить отзыв в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ════════════════════════════════════════════════ -->
+<section id="about" class="section" style="background:var(--surface)">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="about-photo-wrap">
+          <img src="avatar.jpg" alt="Елена Боброва" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="about-photo-placeholder" style="display:none">👩‍💻</div>
+          <span class="about-badge">● Открыта для проектов</span>
+        </div>
+        <div class="about-stats" style="margin-top:2rem">
+          <div class="about-stat"><div class="about-stat-val gradient-text">40+</div><div class="about-stat-lbl">проектов</div></div>
+          <div class="about-stat"><div class="about-stat-val gradient-text">5 лет</div><div class="about-stat-lbl">опыта</div></div>
+          <div class="about-stat"><div class="about-stat-val gradient-text">8</div><div class="about-stat-lbl">стран</div></div>
+          <div class="about-stat"><div class="about-stat-val gradient-text">20+</div><div class="about-stat-lbl">AI-агентов</div></div>
+        </div>
+      </div>
+      <div class="fade-up fade-up-d1">
+        <span class="tag" style="margin-bottom:1.25rem">06. Кто за этим стоит</span>
+        <h2 style="margin-bottom:1.25rem;margin-top:1rem">Елена Боброва</h2>
+        <div class="about-text">
+          <p>Я создаю сайты, веб-приложения и AI-агентов для малого и среднего бизнеса, которому нужен не набор разрозненных инструментов, а понятная цифровая система, работающая на продажи, процессы и рост.</p>
+          <p>Подключаюсь туда, где нужен не просто исполнитель, а специалист, который разберётся в задаче, предложит рабочее решение и доведёт его до запуска.</p>
+          <p>Работаю лично, без субподрядчиков — вы всегда общаетесь с тем, кто проектирует, собирает и отвечает за результат.</p>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-label">Frontend</div>
+          <div class="stack-tags"><span class="tech-tag">React</span><span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind</span></div>
+          <div class="stack-group-label">Backend & AI</div>
+          <div class="stack-tags"><span class="tech-tag">Node.js</span><span class="tech-tag">GPT-4o</span><span class="tech-tag">LangChain</span><span class="tech-tag">n8n</span><span class="tech-tag">Supabase</span></div>
+          <div class="stack-group-label">Инфра</div>
+          <div class="stack-tags"><span class="tech-tag">Vercel</span><span class="tech-tag">Docker</span><span class="tech-tag">GitHub</span></div>
+        </div>
+        <div class="about-links">
+          <a href="https://t.me/el_bobrova" target="_blank" class="about-link">Telegram ↗</a>
+          <a href="#" class="about-link">GitHub ↗</a>
+          <a href="#" class="about-link">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ══════════════════════════════════════════════ -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">07. Стоимость</span>
+      <h2>Прозрачные цены</h2>
+      <p>Ориентировочные цены. Точную стоимость обсудим после брифа — без сюрпризов.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="glass plan-card fade-up">
+        <div class="plan-name">Старт</div>
+        <div class="plan-price gradient-text">от 40 000 ₽</div>
+        <div class="plan-period">единоразово</div>
+        <div class="plan-desc">Лендинг или корпоративный сайт под ключ для малого бизнеса.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Дизайн и разработка</li>
+          <li><span class="check">✓</span>Мобильная адаптация</li>
+          <li><span class="check">✓</span>Базовое SEO</li>
+          <li><span class="check">✓</span>Форма обратной связи</li>
+          <li><span class="check">✓</span>Деплой и настройка домена</li>
+          <li><span class="check">✓</span>30 дней поддержки</li>
+        </ul>
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-ghost btn-full">Обсудить →</a>
+      </div>
+      <div class="glass plan-card popular fade-up fade-up-d1">
+        <span class="plan-badge">★ Рекомендую</span>
+        <div class="plan-name">Бизнес</div>
+        <div class="plan-price gradient-text">от 120 000 ₽</div>
+        <div class="plan-period">единоразово</div>
+        <div class="plan-desc">Веб-приложение или интернет-магазин с полноценной функциональностью.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Дизайн и разработка</li>
+          <li><span class="check">✓</span>SEO-оптимизация</li>
+          <li><span class="check">✓</span>Интеграция CRM / аналитики</li>
+          <li><span class="check">✓</span>Платёжный шлюз</li>
+          <li><span class="check">✓</span>Admin-панель</li>
+          <li><span class="check">✓</span>60 дней поддержки</li>
+        </ul>
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-full">Обсудить →</a>
+      </div>
+      <div class="glass plan-card fade-up fade-up-d2">
+        <div class="plan-name">AI-система</div>
+        <div class="plan-price gradient-text">от 80 000 ₽</div>
+        <div class="plan-period">+ от 8 000 ₽/мес</div>
+        <div class="plan-desc">AI-агент под ключ с CRM-интеграцией и обучением на ваших данных.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Настройка и обучение агента</li>
+          <li><span class="check">✓</span>Интеграция с Telegram/WhatsApp</li>
+          <li><span class="check">✓</span>Подключение к CRM</li>
+          <li><span class="check">✓</span>Аналитика диалогов</li>
+          <li><span class="check">✓</span>Мониторинг и обновления</li>
+          <li><span class="check">✓</span>90 дней поддержки</li>
+        </ul>
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-ghost btn-full">Обсудить →</a>
+      </div>
+    </div>
+    <p class="pricing-note fade-up">Нестандартная задача? <a href="https://t.me/el_bobrova" target="_blank">Напишите в Telegram</a> — рассчитаю индивидуально.<br>Поэтапная оплата: 50% предоплата, 50% при сдаче. NDA по запросу.</p>
+  </div>
+</section>
+
+<!-- ═══ FAQ ══════════════════════════════════════════════════ -->
+<section id="faq" class="section" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="tag">08. FAQ</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="glass faq-item fade-up" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Сколько стоит проект?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Зависит от объёма и сложности. Лендинг — от 40 000 ₽, веб-приложение — от 120 000 ₽, AI-агент — от 80 000 ₽ + поддержка. После брифа даю точную цену — она фиксируется в договоре.</div></div>
+      </div>
+      <div class="glass faq-item fade-up fade-up-d1" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Как долго занимает разработка?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Лендинг: 1–2 недели. Веб-приложение: 3–8 недель. AI-агент: 3–14 дней. Сроки фиксирую в договоре.</div></div>
+      </div>
+      <div class="glass faq-item fade-up fade-up-d2" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Что такое AI-агент простыми словами?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Это цифровой сотрудник: отвечает клиентам, квалифицирует заявки, обрабатывает однотипные запросы — 24/7. Вы настраиваете сценарии, агент выполняет. Все решения — за вами.</div></div>
+      </div>
+      <div class="glass faq-item fade-up fade-up-d3" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Мои данные и данные клиентов будут в безопасности?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Да. Данные хранятся на серверах с шифрованием. Не передаю третьим лицам. Подписываю NDA. Работаю по GDPR-стандартам.</div></div>
+      </div>
+      <div class="glass faq-item fade-up fade-up-d4" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Нужно ли платить за OpenAI API?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Да, API OpenAI/Anthropic оплачивается отдельно — обычно $10–50/мес для малого бизнеса. Помогу настроить аккаунт и оптимизировать расходы.</div></div>
+      </div>
+      <div class="glass faq-item fade-up" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Работаете с клиентами из других стран?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Да, 100% удалённо. Клиенты из России, Казахстана, Германии, ОАЭ, США. Оплата в рублях, долларах, евро.</div></div>
+      </div>
+      <div class="glass faq-item fade-up fade-up-d1" onclick="toggleFaq(this)">
+        <button class="faq-q"><span class="faq-q-text">Вы работаете одна или с командой?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Работаю лично. Если задача требует узкой экспертизы (дизайн, копирайтинг) — привлекаю проверенных специалистов с вашего согласия.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-inner fade-up">
+      <span class="tag" style="margin:0 auto 1.5rem">Открыта к сотрудничеству</span>
+      <h2 style="margin-bottom:1rem">Есть задача?<br>Обсудим — это бесплатно</h2>
+      <p>Расскажите о проекте — честно скажу: реализуемо ли это, сколько займёт и будет стоить. Без обязательств.</p>
+      <div class="glass contact-card fade-up fade-up-d1">
+        <span class="contact-emoji">💬</span>
+        <h3>Написать в Telegram</h3>
+        <p>Один клик — и мы уже разговариваем о вашем проекте</p>
+        <a href="https://t.me/el_bobrova" target="_blank" class="btn btn-primary btn-lg" style="animation:glow 3s ease-in-out infinite">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z"/></svg>
+          Открыть Telegram
+        </a>
+        <p class="contact-handle">@el_bobrova · Обычно отвечаю в течение нескольких часов</p>
+      </div>
+      <div class="form-divider fade-up">или оставьте заявку</div>
+      <div class="glass" style="padding:2rem;border-radius:var(--r)" class="fade-up">
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label>Имя</label>
+            <input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label>Telegram или Email</label>
+            <input type="text" name="contact" placeholder="@username или email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Расскажите о задаче</label>
+            <textarea name="message" rows="4" placeholder="Кратко опишите проект: что нужно сделать, есть ли дедлайн..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Отправить →</button>
+          <p class="form-privacy">Не передаю данные третьим лицам</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <span class="checkmark">✅</span>
+          <strong style="color:var(--text);display:block;margin-bottom:8px">Заявка получена!</strong>
+          Отвечу в Telegram в течение нескольких часов.
+        </div>
+      </div>
+      <div class="guarantees" style="margin-top:1.5rem">
+        <div class="guarantee glass"><span>⚡</span><span>Отвечаю за 15 мин в рабочее время</span></div>
+        <div class="guarantee glass"><span>🔒</span><span>NDA по запросу — без вопросов</span></div>
+        <div class="guarantee glass"><span>🎯</span><span>Первая консультация бесплатна</span></div>
+        <div class="guarantee glass"><span>📋</span><span>Договор и официальная оплата</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="logo"><span>ЕБ</span><span> Боброва</span></a>
+        <p>Создаю сайты, приложения и AI-агентов для бизнеса</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#services">Услуги</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Контакт</a>
+      </nav>
+      <div class="footer-right">
+        <a href="https://t.me/el_bobrova" target="_blank" class="footer-tg">@el_bobrova</a>
+        <span class="footer-copy">© 2026 Все права защищены</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── CURSOR SPOTLIGHT ────────────────────────────────────────
+document.addEventListener('mousemove', e => {
+  document.documentElement.style.setProperty('--cx', e.clientX + 'px');
+  document.documentElement.style.setProperty('--cy', e.clientY + 'px');
+});
+
+// ─── HEADER SCROLL ───────────────────────────────────────────
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive: true});
+
+// ─── BURGER MENU ─────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── SMOOTH SCROLL ───────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+  });
+});
+
+// ─── SCROLL ANIMATIONS ───────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── ACTIVE NAV ───────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, {threshold: 0.4});
+sections.forEach(s => navObs.observe(s));
+
+// ─── TYPEWRITER ───────────────────────────────────────────────
+const words = ['цифровые продукты', 'сайты и лендинги', 'веб-приложения', 'AI-агентов'];
+let wi = 0, ci = 0, deleting = false;
+const tw = document.getElementById('typewriter');
+function type() {
+  const word = words[wi];
+  tw.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+  if (!deleting && ci > word.length) { deleting = true; setTimeout(type, 1800); return; }
+  if (deleting && ci < 0) { deleting = false; wi = (wi + 1) % words.length; ci = 0; setTimeout(type, 300); return; }
+  setTimeout(type, deleting ? 40 : 70);
+}
+setTimeout(type, 800);
+
+// ─── PORTFOLIO FILTER ────────────────────────────────────────
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card => {
+      const show = filter === 'all' || card.dataset.cat === filter;
+      card.style.display = show ? '' : 'none';
+      if (show) { card.style.animation = 'fadeUp 0.4s ease both'; }
+    });
+  });
+});
+
+// ─── 3D TILT ─────────────────────────────────────────────────
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+// ─── FAQ ACCORDION ────────────────────────────────────────────
+function toggleFaq(item) {
+  const answer = item.querySelector('.faq-a');
+  const inner = item.querySelector('.faq-a-inner');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(o => {
+    o.classList.remove('open');
+    o.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = inner.scrollHeight + 'px';
+  }
+}
+
+// ─── ROI CALCULATOR ──────────────────────────────────────────
+function calcRoi() {
+  const leads = +document.getElementById('rLeads').value;
+  const check = +document.getElementById('rCheck').value;
+  document.getElementById('rLeadsVal').textContent = leads;
+  document.getElementById('rCheckVal').textContent = check.toLocaleString('ru') + ' ₽';
+  const lost = Math.round(leads * 0.3 * check * 0.15 / 1000) * 1000;
+  const agentCost = 8000;
+  const payback = Math.ceil(agentCost / (lost / 30));
+  document.getElementById('rLoss').textContent = lost.toLocaleString('ru') + ' ₽';
+  document.getElementById('rPayback').textContent = payback <= 30 ? payback + ' дней' : '~' + Math.ceil(payback/30) + ' мес';
+}
+calcRoi();
+
+// ─── CHAT BOT ────────────────────────────────────────────────
+const botAnswers = {
+  'лендинг': 'Лендинг — от 40 000 ₽, срок 1–2 недели. Включает дизайн, разработку, SEO и 30 дней поддержки. Напишите в Telegram для точного расчёта →',
+  'стоит': 'Лендинг от 40 000 ₽, веб-приложение от 120 000 ₽, AI-агент от 80 000 ₽/проект. Точная цена фиксируется в договоре после брифа.',
+  'ai-агент': 'AI-агент — это цифровой сотрудник, который отвечает клиентам 24/7, квалифицирует заявки и не болеет. Срок — 3–14 дней. Стоимость от 80 000 ₽.',
+  'агент': 'AI-агент — это цифровой сотрудник, который отвечает клиентам 24/7, квалифицирует заявки и не болеет. Срок — 3–14 дней. Стоимость от 80 000 ₽.',
+  'быстро': 'Зависит от задачи: лендинг — 1–2 нед, AI-агент — 3–14 дней, веб-приложение — 3–8 нед. Пишите в Telegram — обсудим сроки под вашу задачу.',
+  'сроки': 'Лендинг: 1–2 нед. AI-агент: 3–14 дней. Приложение: 3–8 нед. Сроки фиксирую в договоре.',
+};
+function getBotReply(text) {
+  const t = text.toLowerCase();
+  for (const [key, val] of Object.entries(botAnswers)) {
+    if (t.includes(key)) return val;
+  }
+  return 'Хороший вопрос! Лучше всего обсудить детали в Telegram — отвечу быстро и конкретно: @el_bobrova 💬';
+}
+function addMsg(text, type) {
+  const body = document.getElementById('chatBody');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.innerHTML = `<div class="chat-bubble ${type}">${text}</div><span class="chat-time">только что</span>`;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+function sendChat() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addMsg(text, 'user');
+  input.value = '';
+  setTimeout(() => addMsg(getBotReply(text), 'bot'), 600);
+}
+function sendQuick(text) {
+  document.getElementById('chatInput').value = text;
+  sendChat();
+}
+
+// ─── FORM SUBMIT ─────────────────────────────────────────────
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Отправка...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('contactForm').style.display = 'none';
+    const fs = document.getElementById('formSuccess');
+    fs.style.display = 'block';
+    requestAnimationFrame(() => fs.classList.add('shown'));
+  }, 1200);
+}
+
+// ─── COUNT-UP ANIMATION ───────────────────────────────────────
+function countUp(el, target, suffix) {
+  let start = 0;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = start + suffix;
+    if (start >= target) clearInterval(timer);
+  }, 40);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.about-stat-val').forEach(el => {
+        const text = el.textContent;
+        const num = parseInt(text);
+        const suffix = text.replace(String(num), '');
+        if (!isNaN(num)) { el.textContent = '0' + suffix; countUp(el, num, suffix); }
+      });
+      statsObs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.5});
+const aboutStats = document.querySelector('.about-stats');
+if (aboutStats) statsObs.observe(aboutStats);
+
+// ─── SCROLL PROGRESS BAR ─────────────────────────────────────
+const pgbar = document.getElementById('pgbar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  pgbar.style.width = (pct * 100) + '%';
+}, {passive: true});
+
+// ─── PARALLAX DOT-GRID ────────────────────────────────────────
+const dotGrid = document.querySelector('.dot-grid');
+window.addEventListener('scroll', () => {
+  if (dotGrid) dotGrid.style.transform = 'translateY(' + (window.scrollY * 0.25) + 'px)';
+}, {passive: true});
+
+// ─── SIDE DOT NAV ─────────────────────────────────────────────
+const sideNavLinks = document.querySelectorAll('#sidenav a');
+const sideObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const id = '#' + entry.target.id;
+    sideNavLinks.forEach(a => {
+      if (a.getAttribute('href') === id) a.classList.toggle('on', entry.isIntersecting);
+    });
+  });
+}, {threshold: 0.4});
+document.querySelectorAll('section[id]').forEach(s => sideObs.observe(s));
+
+// ─── MAGNETIC BUTTONS ─────────────────────────────────────────
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    btn.style.transform = `translate(${dx * 0.18}px, ${dy * 0.18}px) translateY(-2px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+// ─── WORD-BY-WORD H2 REVEAL ───────────────────────────────────
+document.querySelectorAll('.section-label h2').forEach(h2 => {
+  const parts = h2.innerHTML.split(' ');
+  h2.innerHTML = parts.map((w, i) =>
+    `<span class="reveal-word" style="transition-delay:${i * 0.07}s">${w}</span>`
+  ).join(' ');
+});
+const wordObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.reveal-word').forEach(w => w.classList.add('vis'));
+      wordObs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.3});
+document.querySelectorAll('.section-label h2').forEach(h2 => wordObs.observe(h2));
+
+// ─── ANIMATED GRADIENT ON ALL GRADIENT TEXT ───────────────────
+document.querySelectorAll('.gradient-text').forEach(el => el.classList.add('animated-grad'));
+
+// ─── BACK TO TOP ──────────────────────────────────────────────
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('show', window.scrollY > 400);
+}, {passive: true});
+toTop.addEventListener('click', () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// ─── PROOF STATS COUNT-UP ─────────────────────────────────────
+const proofObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.proof-stat-val').forEach(el => {
+        const text = el.textContent;
+        const num = parseInt(text);
+        if (!isNaN(num)) {
+          const suffix = text.replace(String(num), '');
+          el.textContent = '0' + suffix;
+          countUp(el, num, suffix);
+        }
+      });
+      proofObs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.4});
+const proofStats = document.querySelector('.proof-stats');
+if (proofStats) proofObs.observe(proofStats);
+</script>
+</body>
+</html>
