@@ -17,9 +17,9 @@ const TYPEWRITER_TEXTS = [
 ];
 
 const STATS = [
-  { value: "40+", label: "проектов сдано" },
-  { value: "3 дня", label: "до первого результата" },
-  { value: "×3", label: "рост конверсии клиентов" },
+  { value: "40+", label: "проектов" },
+  { value: "3 дня", label: "до старта" },
+  { value: "×3", label: "рост конверсии" },
 ];
 
 const TECH_TAGS = [

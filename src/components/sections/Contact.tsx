@@ -44,7 +44,7 @@ export function Contact() {
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest uppercase text-[var(--color-accent)] border border-[var(--color-accent)]/30 rounded-full px-3 py-1 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse inline-block" />
-              Открыт к сотрудничеству
+              Открыта к сотрудничеству
             </span>
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6">
               Готовы начать{" "}

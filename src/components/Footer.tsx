@@ -11,7 +11,7 @@ export function Footer() {
             href="#hero"
             className="font-mono font-bold text-lg tracking-tight hover:text-[var(--color-accent)] transition-colors"
           >
-            <span className="gradient-text">{SITE.nameShort}</span>
+            <span className="gradient-text">{SITE.name.split(" ")[0]}</span>
             <span className="text-[var(--color-text-muted)]"> {SITE.name.split(" ")[1]}</span>
           </a>
           <p className="text-xs text-[var(--color-text-muted)]">
