@@ -66,21 +66,21 @@ export function Hero() {
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(45,212,191,0.18) 0%, transparent 65%)",
           filter: "blur(80px)",
         }}
       />
       <div
         className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(244,114,182,0.13) 0%, transparent 65%)",
           filter: "blur(80px)",
         }}
       />
       <div
         className="absolute top-1/2 left-0 w-[300px] h-[300px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(232,121,249,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(251,113,133,0.08) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
