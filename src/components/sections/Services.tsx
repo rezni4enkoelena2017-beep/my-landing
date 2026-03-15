@@ -56,7 +56,7 @@ export function Services() {
               className={`
                 relative glass-card p-8 flex flex-col gap-4 transition-all duration-300
                 hover:border-[var(--color-accent)]/40 hover:shadow-[var(--shadow-glow)]
-                ${service.featured ? "border-[var(--color-accent)]/30 ring-1 ring-[var(--color-accent)]/20" : ""}
+                ${service.featured ? "neon-cycle" : ""}
               `}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}

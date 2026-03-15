@@ -2,24 +2,27 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --color-bg: #09090b;
-  --color-bg-2: #111113;
-  --color-accent: #7c3aed;
-  --color-accent-hover: #6d28d9;
-  --color-accent-2: #06b6d4;
-  --color-text: #f4f4f5;
-  --color-text-muted: #71717a;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-bg:          #09090b;
+  --color-bg-2:        #0e0e11;
+  --color-accent:      #8b5cf6;
+  --color-accent-hover:#7c3aed;
+  --color-accent-2:    #22d3ee;
+  --color-accent-3:    #e879f9;
+  --color-text:        #f4f4f5;
+  --color-text-muted:  #71717a;
+  --color-border:      rgba(255, 255, 255, 0.08);
+  --color-glass:       rgba(14, 14, 17, 0.85);
 
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-sans:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Code", monospace;
 
-  --radius-card: 24px;
-  --radius-btn: 12px;
+  --radius-card: 20px;
+  --radius-btn:  12px;
 
-  --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.25);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.3);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 8px 32px rgba(0,0,0,0.4);
+  --glow:        rgba(139, 92, 246, 0.4);
 
   --cursor-x: 50%;
   --cursor-y: 50%;
@@ -49,6 +52,7 @@ body {
 
 /* ─── Typography ────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -60,38 +64,80 @@ p {
   color: var(--color-text-muted);
 }
 
-/* ─── Dot-grid hero background ──────────────────────────────── */
+/* ─── Cosmic grid hero background ──────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(
-    circle,
-    rgba(124, 58, 237, 0.25) 1px,
-    transparent 1px
-  );
-  background-size: 28px 28px;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+  position: relative;
+}
+
+.dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,92,246,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 60%, rgba(34,211,238,0.10) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 /* ─── Glassmorphism card ────────────────────────────────────── */
 .glass-card {
   background: var(--color-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
 }
 
-/* ─── Gradient text ─────────────────────────────────────────── */
+/* ─── Animated gradient text ────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-accent-2) 40%,
+    var(--color-accent-3) 70%,
+    var(--color-accent) 100%
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ─── Neon cycling border for featured cards ────────────────── */
+.neon-cycle {
+  animation: neonCycle 5s ease-in-out infinite;
+}
+
+@keyframes neonCycle {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(139,92,246,0.6), 0 0 24px rgba(139,92,246,0.25);
+    border-color: rgba(139,92,246,0.5);
+  }
+  40% {
+    box-shadow: 0 0 0 1px rgba(34,211,238,0.6), 0 0 24px rgba(34,211,238,0.25);
+    border-color: rgba(34,211,238,0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 1px rgba(232,121,249,0.6), 0 0 24px rgba(232,121,249,0.25);
+    border-color: rgba(232,121,249,0.5);
+  }
 }
 
 /* ─── Cursor spotlight ──────────────────────────────────────── */
 .spotlight {
   background: radial-gradient(
     600px circle at var(--cursor-x) var(--cursor-y),
-    rgba(124, 58, 237, 0.07),
+    rgba(139, 92, 246, 0.07),
     transparent 40%
   );
   position: fixed;
@@ -110,14 +156,8 @@ p {
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─── Terminal blink cursor ─────────────────────────────────── */
@@ -127,17 +167,17 @@ p {
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50%       { opacity: 0; }
 }
 
-/* ─── Glow pulse ────────────────────────────────────────────── */
+/* ─── Glow pulse (CTA button) ───────────────────────────────── */
 .glow-pulse {
   animation: glowPulse 3s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
-  50% { box-shadow: 0 0 60px rgba(124, 58, 237, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(139,92,246,0.35), 0 0 0 0 rgba(139,92,246,0); }
+  50%       { box-shadow: 0 0 50px rgba(139,92,246,0.6),  0 0 0 6px rgba(139,92,246,0.08); }
 }
 
 /* ─── Section spacing ───────────────────────────────────────── */
@@ -153,21 +193,15 @@ p {
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: linear-gradient(var(--color-accent), var(--color-accent-2));
   border-radius: 3px;
 }
 
 /* ─── Selection ─────────────────────────────────────────────── */
 ::selection {
-  background: rgba(124, 58, 237, 0.4);
+  background: rgba(139, 92, 246, 0.4);
   color: var(--color-text);
 }

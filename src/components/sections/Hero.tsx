@@ -64,16 +64,23 @@ export function Hero() {
     >
       {/* Glow blobs */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%)",
-          filter: "blur(60px)",
+          background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 65%)",
+          filter: "blur(80px)",
         }}
       />
       <div
-        className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+        className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 65%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-0 w-[300px] h-[300px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(232,121,249,0.08) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />

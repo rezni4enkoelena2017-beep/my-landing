@@ -76,10 +76,7 @@ export function Pricing() {
               className={`
                 glass-card p-8 flex flex-col gap-6 relative transition-all duration-300
                 hover:shadow-[var(--shadow-glow)]
-                ${plan.featured
-                  ? "border-[var(--color-accent)]/40 ring-1 ring-[var(--color-accent)]/20"
-                  : "hover:border-[var(--color-accent)]/20"
-                }
+                ${plan.featured ? "neon-cycle" : "hover:border-[var(--color-accent)]/20"}
               `}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
