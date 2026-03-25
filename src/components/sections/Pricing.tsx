@@ -5,8 +5,6 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/config";
 
-const TELEGRAM_URL = SITE.telegram;
-
 const PLANS = [
   {
     name: "Старт",
@@ -69,7 +67,7 @@ export function Pricing() {
           subtitle="Все что входит в проект — обговорено заранее. Цена финальная."
         />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -109,7 +107,7 @@ export function Pricing() {
               </ul>
 
               <Button
-                href={TELEGRAM_URL}
+                href={SITE.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant={plan.featured ? "primary" : "secondary"}
@@ -131,7 +129,7 @@ export function Pricing() {
         >
           Нужен индивидуальный расчёт?{" "}
           <a
-            href={TELEGRAM_URL}
+            href={SITE.telegram}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-accent)] hover:underline"

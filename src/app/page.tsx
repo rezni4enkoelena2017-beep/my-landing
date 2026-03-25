@@ -27,12 +27,12 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
+        <About />
         <SocialProof />
         <Services />
         <Portfolio />
         <Process />
         <Testimonials />
-        <About />
         <Pricing />
         <Faq />
         <Contact />

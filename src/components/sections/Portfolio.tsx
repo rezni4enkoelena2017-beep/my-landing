@@ -7,8 +7,6 @@ import { TechTag } from "@/components/ui/TechTag";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/config";
 
-const TELEGRAM_URL = SITE.telegram;
-
 const FILTERS = ["Все", "Сайт", "AI-агент", "Приложение"] as const;
 type Filter = typeof FILTERS[number];
 
@@ -86,9 +84,9 @@ export function Portfolio() {
       <div className="container">
         <SectionTitle
           tag="Портфолио"
-          title="Учебные проекты —"
-          highlight="примеры моего подхода"
-          subtitle="Проекты из курса и личные эксперименты. Показывают стек и то, как я думаю над задачей."
+          title="Портфолио —"
+          highlight="как я решаю задачи"
+          subtitle="Учебные проекты и личные эксперименты. Показывают стек и подход к задаче."
         />
 
         {/* Filter tabs */}
@@ -171,7 +169,7 @@ export function Portfolio() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Button href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" variant="secondary" size="md">
+          <Button href={SITE.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="md">
             Обсудить похожий проект
           </Button>
         </motion.div>

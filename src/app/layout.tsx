@@ -84,6 +84,7 @@ const schemaPersonJson = {
   url: BASE_URL,
   image: `${BASE_URL}/avatar.jpg`,
   sameAs: ["https://t.me/el_bobrova"],
+  areaServed: ["RU", "BY", "KZ"],
   knowsAbout: [
     "Next.js",
     "React",
