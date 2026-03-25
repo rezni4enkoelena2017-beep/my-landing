@@ -38,9 +38,11 @@ export function About() {
               <div className="w-64 h-64 rounded-3xl overflow-hidden border border-[var(--color-border)] shadow-[0_0_60px_rgba(124,58,237,0.2)]">
                 <Image
                   src="/avatar.jpg"
-                  alt={SITE.name}
+                  alt="Елена Боброва — разработчик сайтов, веб-приложений и AI-агентов"
                   width={256}
                   height={256}
+                  sizes="(max-width: 768px) 100vw, 256px"
+                  quality={85}
                   className="object-cover w-full h-full"
                   priority
                 />

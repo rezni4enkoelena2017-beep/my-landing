@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://my-landing-ld1naf5qo-rezni4enkoelena2017-beeps-projects.vercel.app/sitemap.xml

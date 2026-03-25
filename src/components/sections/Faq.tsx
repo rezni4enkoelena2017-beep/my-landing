@@ -60,6 +60,7 @@ export function Faq() {
               <button
                 className="w-full flex items-center justify-between gap-4 p-6 text-left cursor-pointer"
                 onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
               >
                 <span className="font-semibold text-[var(--color-text)]">{faq.q}</span>
                 <motion.span
