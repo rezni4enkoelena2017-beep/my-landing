@@ -10,7 +10,7 @@ const TELEGRAM_URL = SITE.telegram;
 const PLANS = [
   {
     name: "Старт",
-    price: "$500",
+    price: "45 000 ₽",
     period: "один раз",
     desc: "Для тех, кому нужна качественная точка входа в интернет.",
     features: [
@@ -26,7 +26,7 @@ const PLANS = [
   },
   {
     name: "Бизнес",
-    price: "$1200",
+    price: "110 000 ₽",
     period: "один раз",
     desc: "Полноценный сайт или MVP приложения с функциональностью.",
     features: [
@@ -42,7 +42,7 @@ const PLANS = [
   },
   {
     name: "AI-Pro",
-    price: "от $800",
+    price: "от 70 000 ₽",
     period: "проект",
     desc: "AI-агент или автоматизация, которая работает вместо сотрудника.",
     features: [
