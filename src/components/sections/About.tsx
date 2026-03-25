@@ -44,7 +44,6 @@ export function About() {
                   sizes="(max-width: 768px) 100vw, 256px"
                   quality={85}
                   className="object-cover w-full h-full"
-                  priority
                 />
               </div>
               {/* Status badge */}

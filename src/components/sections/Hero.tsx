@@ -93,31 +93,42 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — static for SEO, all keywords present */}
           <motion.h1
-            className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-tight mb-6"
+            className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-tight mb-4"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
+            <span className="gradient-text">Сайты, веб-приложения</span>
+            <br />
+            <span className="text-[var(--color-text)]">и AI-агенты для бизнеса</span>
+          </motion.h1>
+
+          {/* Typewriter — decorative, below H1 */}
+          <motion.p
+            className="text-[clamp(1rem,2vw,1.2rem)] text-[var(--color-text-muted)] mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             Строю{" "}
-            <span className="gradient-text relative">
+            <span className="text-[var(--color-accent)] font-medium">
               {displayed}
               <span className="blink text-[var(--color-accent)]">|</span>
             </span>
-            <br />
-            <span className="text-[var(--color-text)]">которые работают на ваш бизнес</span>
-          </motion.h1>
+            {" "}которые работают на ваш бизнес
+          </motion.p>
 
           {/* Subheadline */}
           <motion.p
-            className="text-[clamp(1rem,2vw,1.25rem)] text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10"
+            className="text-[clamp(0.95rem,1.8vw,1.15rem)] text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Только завершила обучение — предлагаю серьёзный подход и актуальный стек
-            по сниженной цене для первых клиентов. Без лишних формальностей.
+            Актуальный стек, полное погружение в проект и гарантия возврата.
+            Первым трём клиентам — скидка 50%.
           </motion.p>
 
           {/* Tech tags */}
