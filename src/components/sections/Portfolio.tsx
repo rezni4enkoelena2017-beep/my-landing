@@ -86,9 +86,9 @@ export function Portfolio() {
       <div className="container">
         <SectionTitle
           tag="Портфолио"
-          title="Реальные проекты,"
-          highlight="реальные результаты"
-          subtitle="Не макеты — живые продукты с измеримым эффектом для бизнеса."
+          title="Учебные проекты —"
+          highlight="примеры моего подхода"
+          subtitle="Проекты из курса и личные эксперименты. Показывают стек и то, как я думаю над задачей."
         />
 
         {/* Filter tabs */}
@@ -171,7 +171,7 @@ export function Portfolio() {
           transition={{ duration: 0.5 }}
         >
           <Button href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" variant="secondary" size="md">
-            Хочу такой же результат
+            Обсудить похожий проект
           </Button>
         </motion.div>
       </div>

@@ -17,9 +17,9 @@ const TYPEWRITER_TEXTS = [
 ];
 
 const STATS = [
-  { value: "40+", label: "проектов" },
-  { value: "3 дня", label: "до старта" },
-  { value: "×3", label: "рост конверсии" },
+  { value: "12+", label: "технологий" },
+  { value: "1–3 дня", label: "до старта" },
+  { value: "−50%", label: "первым клиентам" },
 ];
 
 const TECH_TAGS = [
@@ -89,7 +89,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/10 text-sm font-mono text-[var(--color-accent)]">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              Открыт для новых проектов
+              Набираю первые коммерческие проекты
             </span>
           </motion.div>
 
@@ -116,8 +116,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
           >
-            Веб-разработка и AI-автоматизация под ключ — от идеи до первых клиентов.
-            Без длинных брифов и недельных ожиданий.
+            Только завершила обучение — предлагаю серьёзный подход и актуальный стек
+            по сниженной цене для первых клиентов. Без лишних формальностей.
           </motion.p>
 
           {/* Tech tags */}
