@@ -35,7 +35,7 @@ export function About() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative">
-              <div className="w-64 h-64 rounded-3xl overflow-hidden border border-[var(--color-border)] shadow-[0_0_60px_rgba(124,58,237,0.2)]">
+              <div className="w-72 h-72 rounded-3xl overflow-hidden border border-[var(--color-border)] shadow-[0_0_60px_rgba(124,58,237,0.2)]">
                 <Image
                   src="/avatar.jpg"
                   alt="Елена Боброва — разработчик сайтов, веб-приложений и AI-агентов"
@@ -52,19 +52,6 @@ export function About() {
               </span>
             </div>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-3 w-64 mt-4">
-              {[
-                { value: "12+", label: "технологий" },
-                { value: "1–3 дня", label: "до старта" },
-                { value: "−50%", label: "первым" },
-              ].map((s) => (
-                <div key={s.label} className="text-center glass-card py-3 px-1">
-                  <div className="text-lg font-bold gradient-text leading-none">{s.value}</div>
-                  <div className="text-[10px] text-[var(--color-text-muted)] mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
           {/* Right: text + skills */}

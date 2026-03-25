@@ -56,7 +56,7 @@ export function Process() {
           {/* Vertical line */}
           <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent-2)] to-transparent hidden md:block" />
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             {STEPS.map((step, i) => (
               <motion.div
                 key={step.num}
