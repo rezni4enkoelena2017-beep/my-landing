@@ -130,7 +130,7 @@ export function Header() {
       </AnimatePresence>
 
       {/* Mobile sticky CTA */}
-      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 right-4 z-50 md:hidden">
+      <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
         <Button
           href={SITE.telegram}
           target="_blank"

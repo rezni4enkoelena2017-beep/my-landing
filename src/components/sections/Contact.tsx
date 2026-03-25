@@ -47,7 +47,7 @@ export function Contact() {
             </span>
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6">
               Готовы начать{" "}
-              <span className="text-[var(--color-accent-2)]">ваш проект?</span>
+              <span className="gradient-text">ваш проект?</span>
             </h2>
             <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-[var(--color-text-muted)] max-w-xl mx-auto">
               Напишите в Telegram — расскажите задачу. Уже через 15 минут получите первую обратную связь.
@@ -57,15 +57,13 @@ export function Contact() {
 
           {/* Main CTA card */}
           <motion.div
-            className="glass-card p-6 text-center border-[var(--color-accent)]/20 mb-8"
+            className="glass-card p-10 text-center border-[var(--color-accent)]/20 mb-8"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="w-16 h-16 rounded-2xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mx-auto mb-6">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-[var(--color-accent)]" aria-hidden="true"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0Zm5.992 8.244-2.013 9.485c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.876.736Z"/></svg>
-            </div>
+            <div className="text-6xl mb-6">💬</div>
             <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">Написать в Telegram</h3>
             <p className="text-[var(--color-text-muted)] mb-8">
               Один клик — и мы уже разговариваем о вашем проекте

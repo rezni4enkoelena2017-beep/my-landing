@@ -16,6 +16,12 @@ const TYPEWRITER_TEXTS = [
   "AI-агентов",
 ];
 
+const STATS = [
+  { value: "12+", label: "технологий" },
+  { value: "1–3 дня", label: "до старта" },
+  { value: "−50%", label: "первым клиентам" },
+];
+
 const TECH_TAGS = [
   { label: "Next.js", color: "neutral" as const },
   { label: "React", color: "cyan" as const },
@@ -164,6 +170,20 @@ export function Hero() {
             </Button>
           </motion.div>
 
+          {/* Stats */}
+          <motion.div
+            className="grid grid-cols-3 gap-6 max-w-lg mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+          >
+            {STATS.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-[clamp(1.5rem,3vw,2rem)] font-bold gradient-text">{stat.value}</div>
+                <div className="text-xs text-[var(--color-text-muted)] mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 

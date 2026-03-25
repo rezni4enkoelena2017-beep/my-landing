@@ -52,7 +52,7 @@ export function Services() {
             <motion.div
               key={service.title}
               className={`
-                relative glass-card p-6 flex flex-col gap-4 transition-all duration-300
+                relative glass-card p-8 flex flex-col gap-4 transition-all duration-300
                 hover:border-[var(--color-accent)]/40 hover:shadow-[var(--shadow-glow)]
                 ${service.featured ? "neon-cycle" : ""}
               `}

@@ -72,7 +72,7 @@ export function Pricing() {
             <motion.div
               key={plan.name}
               className={`
-                glass-card p-8 flex flex-col gap-5 relative transition-all duration-300
+                glass-card p-8 flex flex-col gap-6 relative transition-all duration-300
                 hover:shadow-[var(--shadow-glow)]
                 ${plan.featured ? "neon-cycle" : "hover:border-[var(--color-accent)]/20"}
               `}
@@ -88,7 +88,7 @@ export function Pricing() {
               )}
 
               <div>
-                <div className="text-base font-mono font-semibold text-[var(--color-text-muted)] mb-2">{plan.name}</div>
+                <div className="text-sm font-mono font-semibold text-[var(--color-text-muted)] mb-2">{plan.name}</div>
                 <div className="text-[clamp(2rem,4vw,2.5rem)] font-bold text-[var(--color-text)] leading-none mb-1">
                   {plan.price}
                 </div>

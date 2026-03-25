@@ -4,7 +4,7 @@ const YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] py-14">
+    <footer className="border-t border-[var(--color-border)] py-10">
       <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col items-center md:items-start gap-1">
           <a
@@ -14,12 +14,12 @@ export function Footer() {
             <span className="gradient-text">{SITE.name.split(" ")[0]}</span>
             <span className="text-[var(--color-text-muted)]"> {SITE.name.split(" ")[1]}</span>
           </a>
-          <p className="text-sm text-[var(--color-text-muted)]">
+          <p className="text-xs text-[var(--color-text-muted)]">
             {SITE.tagline}
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-6">
+        <nav className="flex gap-6">
           {[
             ["Услуги", "#services"],
             ["Портфолио", "#portfolio"],

@@ -35,7 +35,7 @@ const PERKS = [
 
 export function Testimonials() {
   return (
-    <section id="offer" className="section">
+    <section id="testimonials" className="section">
       <div className="container">
         <SectionTitle
           tag="Специальное предложение"

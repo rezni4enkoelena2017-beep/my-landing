@@ -25,7 +25,7 @@ export function SocialProof() {
     <section id="proof" className="section border-y border-[var(--color-border)]">
       <div className="container">
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -35,7 +35,7 @@ export function SocialProof() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="text-[clamp(2rem,4vw,3rem)] font-bold text-[var(--color-text)] leading-none mb-2">
+              <div className="text-[clamp(2rem,4vw,3rem)] font-bold gradient-text leading-none mb-2">
                 {stat.value}
               </div>
               <div className="text-sm font-semibold text-[var(--color-text)] mb-0.5">{stat.label}</div>
