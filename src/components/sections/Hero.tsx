@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { TechTag } from "@/components/ui/TechTag";
-import { TelegramIcon } from "@/components/ui/TelegramIcon";
 import { SITE } from "@/lib/config";
 
+const TELEGRAM_URL = SITE.telegram;
 const PORTFOLIO_ANCHOR = "#portfolio";
 
 const TYPEWRITER_TEXTS = [
@@ -17,9 +17,9 @@ const TYPEWRITER_TEXTS = [
 ];
 
 const STATS = [
-  { value: "12+", label: "технологий" },
-  { value: "1–3 дня", label: "до старта" },
-  { value: "−50%", label: "первым клиентам" },
+  { value: "40+", label: "проектов сдано" },
+  { value: "3 дня", label: "до первого результата" },
+  { value: "×3", label: "рост конверсии клиентов" },
 ];
 
 const TECH_TAGS = [
@@ -89,46 +89,35 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/10 text-sm font-mono text-[var(--color-accent)]">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              Набираю первые коммерческие проекты
+              Открыт для новых проектов
             </span>
           </motion.div>
 
-          {/* Headline — static for SEO, all keywords present */}
+          {/* Headline */}
           <motion.h1
-            className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-tight mb-4"
+            className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-tight mb-6"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="gradient-text">Сайты, веб-приложения</span>
-            <br />
-            <span className="text-[var(--color-text)]">и AI-агенты для бизнеса</span>
-          </motion.h1>
-
-          {/* Typewriter — decorative, below H1 */}
-          <motion.p
-            className="text-[clamp(1rem,2vw,1.2rem)] text-[var(--color-text-muted)] mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
             Строю{" "}
-            <span className="text-[var(--color-accent)] font-medium">
+            <span className="gradient-text relative">
               {displayed}
               <span className="blink text-[var(--color-accent)]">|</span>
             </span>
-            {" "}которые работают на ваш бизнес
-          </motion.p>
+            <br />
+            <span className="text-[var(--color-text)]">которые работают на ваш бизнес</span>
+          </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            className="text-[clamp(0.95rem,1.8vw,1.15rem)] text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10"
+            className="text-[clamp(1rem,2vw,1.25rem)] text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
           >
-            Актуальный стек, полное погружение в проект и гарантия возврата.
-            Первым трём клиентам — скидка 50%.
+            Веб-разработка и AI-автоматизация под ключ — от идеи до первых клиентов.
+            Без длинных брифов и недельных ожиданий.
           </motion.p>
 
           {/* Tech tags */}
@@ -151,7 +140,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <Button
-              href={SITE.telegram}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
@@ -189,7 +178,6 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        aria-hidden="true"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -206,10 +194,17 @@ export function Hero() {
   );
 }
 
+function TelegramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z" />
+    </svg>
+  );
+}
 
 function ArrowDown() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 5v14M5 12l7 7 7-7" />
     </svg>
   );

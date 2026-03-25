@@ -38,32 +38,17 @@ export function About() {
               <div className="w-64 h-64 rounded-3xl overflow-hidden border border-[var(--color-border)] shadow-[0_0_60px_rgba(124,58,237,0.2)]">
                 <Image
                   src="/avatar.jpg"
-                  alt="Елена Боброва — разработчик сайтов, веб-приложений и AI-агентов"
+                  alt={SITE.name}
                   width={256}
                   height={256}
-                  sizes="(max-width: 768px) 100vw, 256px"
-                  quality={85}
                   className="object-cover w-full h-full"
+                  priority
                 />
               </div>
               {/* Status badge */}
               <span className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-full bg-[var(--color-bg-2)] border border-[var(--color-accent)]/30 text-xs font-mono text-[var(--color-accent)] whitespace-nowrap">
                 ● Открыта для проектов
               </span>
-            </div>
-
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-3 w-64 mt-4">
-              {[
-                { value: "12+", label: "технологий" },
-                { value: "1–3 дня", label: "до старта" },
-                { value: "−50%", label: "первым" },
-              ].map((s) => (
-                <div key={s.label} className="text-center glass-card py-3 px-1">
-                  <div className="text-lg font-bold gradient-text leading-none">{s.value}</div>
-                  <div className="text-[10px] text-[var(--color-text-muted)] mt-1">{s.label}</div>
-                </div>
-              ))}
             </div>
           </motion.div>
 
@@ -87,21 +72,19 @@ export function About() {
 
             <div className="flex flex-col gap-4 text-[var(--color-text-muted)] leading-relaxed">
               <p>
-                Я только завершила обучение по веб-разработке и AI и сейчас набираю
-                первые коммерческие проекты. Это честно — и это моё преимущество:
-                актуальный стек, полное погружение в задачу и личная заинтересованность
-                в результате.
+                Я создаю сайты, веб-приложения и AI-агентов для малого и среднего
+                бизнеса, которому нужен не набор разрозненных инструментов,
+                а понятная цифровая система, работающая на продажи, процессы и рост.
               </p>
               <p>
-                Умею строить лендинги, веб-приложения и Telegram-ботов с AI —
-                от архитектуры до деплоя. Учебные проекты показывают,
-                что умею, а не что уже продавала. Работаю лично, без посредников.
-                Удалённо — клиенты из России, Беларуси, Казахстана и других стран.
+                Подключаюсь туда, где нужен не просто исполнитель, а специалист,
+                который разберётся в задаче, предложит рабочее решение и доведёт
+                его до запуска. Для меня сайт должен приводить заявки, приложение —
+                упрощать работу, а AI-агент — снимать рутину и помогать не терять клиентов.
               </p>
               <p>
-                Первым трём клиентам предлагаю сниженную цену в обмен на
-                честный отзыв после запуска. Договор, поддержка, гарантия возврата —
-                всё включено.
+                Работаю лично, без субподрядчиков — вы всегда общаетесь с тем,
+                кто проектирует, собирает и отвечает за результат.
               </p>
             </div>
 

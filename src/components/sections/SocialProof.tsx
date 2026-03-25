@@ -3,21 +3,19 @@
 import { motion } from "framer-motion";
 
 const STATS = [
-  { value: "12+", label: "технологий", sublabel: "в актуальном стеке" },
-  { value: "6", label: "проектов", sublabel: "в портфолио" },
-  { value: "1–3 дня", label: "до старта", sublabel: "после первого созвона" },
-  { value: "−50%", label: "скидка", sublabel: "первым трём клиентам" },
+  { value: "40+", label: "проектов", sublabel: "сдано в срок" },
+  { value: "98%", label: "клиентов", sublabel: "возвращаются снова" },
+  { value: "3×", label: "рост конверсии", sublabel: "у клиентов в среднем" },
+  { value: "24 ч", label: "поддержка", sublabel: "после сдачи проекта" },
 ];
 
-const TECH_NAMES = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Node.js",
-  "PostgreSQL",
-  "LangChain",
-  "Telegram Bot",
-  "n8n",
+const LOGOS = [
+  "StartupA",
+  "RetailBrand",
+  "SaaS Co",
+  "MedClinic",
+  "LegalFirm",
+  "EcomStore",
 ];
 
 export function SocialProof() {
@@ -44,7 +42,7 @@ export function SocialProof() {
           ))}
         </div>
 
-        {/* Tech stack */}
+        {/* Trusted by */}
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
@@ -53,13 +51,13 @@ export function SocialProof() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-xs font-mono text-[var(--color-text-muted)] tracking-widest uppercase mb-6">
-            Технологии в стеке
+            Доверяют бизнесы из разных сфер
           </p>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
-            {TECH_NAMES.map((name) => (
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+            {LOGOS.map((name) => (
               <span
                 key={name}
-                className="text-sm font-semibold text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+                className="text-sm font-semibold text-[var(--color-text-muted)] opacity-50 hover:opacity-80 transition-opacity"
               >
                 {name}
               </span>

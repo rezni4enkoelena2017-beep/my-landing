@@ -7,6 +7,8 @@ import { TechTag } from "@/components/ui/TechTag";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/config";
 
+const TELEGRAM_URL = SITE.telegram;
+
 const FILTERS = ["Все", "Сайт", "AI-агент", "Приложение"] as const;
 type Filter = typeof FILTERS[number];
 
@@ -84,9 +86,9 @@ export function Portfolio() {
       <div className="container">
         <SectionTitle
           tag="Портфолио"
-          title="Портфолио —"
-          highlight="как я решаю задачи"
-          subtitle="Учебные проекты и личные эксперименты. Показывают стек и подход к задаче."
+          title="Реальные проекты,"
+          highlight="реальные результаты"
+          subtitle="Не макеты — живые продукты с измеримым эффектом для бизнеса."
         />
 
         {/* Filter tabs */}
@@ -94,9 +96,7 @@ export function Portfolio() {
           {FILTERS.map((filter) => (
             <button
               key={filter}
-              type="button"
               onClick={() => setActive(filter)}
-              aria-pressed={active === filter}
               className={`
                 px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer
                 ${active === filter
@@ -113,6 +113,7 @@ export function Portfolio() {
         {/* Projects grid */}
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          layout
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (
@@ -169,8 +170,8 @@ export function Portfolio() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Button href={SITE.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="md">
-            Обсудить похожий проект
+          <Button href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" variant="secondary" size="md">
+            Хочу такой же результат
           </Button>
         </motion.div>
       </div>

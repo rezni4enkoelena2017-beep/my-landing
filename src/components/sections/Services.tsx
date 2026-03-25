@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/Button";
 import { TechTag } from "@/components/ui/TechTag";
 import { SITE } from "@/lib/config";
 
+const TELEGRAM_URL = SITE.telegram;
+
 const SERVICES = [
   {
     icon: "🌐",
     title: "Сайт / Лендинг",
     desc: "Конвертирующий лендинг или корпоративный сайт. Быстро, красиво, под ваш бренд.",
-    price: "от 45 000 ₽",
+    price: "от $500",
     deadline: "5–10 дней",
     tags: ["Next.js", "Tailwind", "CMS"],
     featured: false,
@@ -20,7 +22,7 @@ const SERVICES = [
     icon: "🤖",
     title: "AI-агент для бизнеса",
     desc: "Чат-бот или голосовой агент в Telegram/WhatsApp, который отвечает клиентам 24/7, берёт заявки и передаёт в CRM.",
-    price: "от 70 000 ₽",
+    price: "от $800",
     deadline: "7–14 дней",
     tags: ["LLM", "Telegram", "CRM", "n8n"],
     featured: true,
@@ -29,7 +31,7 @@ const SERVICES = [
     icon: "⚡",
     title: "Веб-приложение / MVP",
     desc: "Полноценное SaaS или внутренний инструмент. От прототипа до продакшена за 2–4 недели.",
-    price: "от 130 000 ₽",
+    price: "от $1500",
     deadline: "14–30 дней",
     tags: ["React", "Node.js", "PostgreSQL"],
     featured: false,
@@ -47,14 +49,14 @@ export function Services() {
           subtitle="Три ключевых направления — выберите то, что нужно сейчас, или возьмите комплекс."
         />
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.title}
               className={`
                 relative glass-card p-8 flex flex-col gap-4 transition-all duration-300
                 hover:border-[var(--color-accent)]/40 hover:shadow-[var(--shadow-glow)]
-                ${service.featured ? "neon-cycle" : ""}
+                ${service.featured ? "border-[var(--color-accent)]/30 ring-1 ring-[var(--color-accent)]/20" : ""}
               `}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +89,7 @@ export function Services() {
                   <div className="text-xs text-[var(--color-text-muted)]">{service.deadline}</div>
                 </div>
                 <Button
-                  href={SITE.telegram}
+                  href={TELEGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   size="sm"

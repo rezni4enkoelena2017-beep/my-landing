@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { TelegramIcon } from "@/components/ui/TelegramIcon";
 import { SITE } from "@/lib/config";
+
+const TELEGRAM_URL = SITE.telegram;
 
 const CONTACT_OPTIONS = [
   {
@@ -23,7 +24,7 @@ const GUARANTEES = [
 
 export function Contact() {
   return (
-    <section id="contact" className="section relative overflow-hidden pb-28 md:pb-[clamp(4rem,8vw,8rem)]">
+    <section id="contact" className="section relative overflow-hidden">
       {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -43,7 +44,7 @@ export function Contact() {
           >
             <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest uppercase text-[var(--color-accent)] border border-[var(--color-accent)]/30 rounded-full px-3 py-1 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse inline-block" />
-              Открыта к сотрудничеству
+              Открыт к сотрудничеству
             </span>
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6">
               Готовы начать{" "}
@@ -69,7 +70,7 @@ export function Contact() {
               Один клик — и мы уже разговариваем о вашем проекте
             </p>
             <Button
-              href={SITE.telegram}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
@@ -107,3 +108,10 @@ export function Contact() {
   );
 }
 
+function TelegramIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z" />
+    </svg>
+  );
+}

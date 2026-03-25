@@ -7,7 +7,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 const FAQS = [
   {
     q: "Сколько стоит проект?",
-    a: "Цена зависит от задачи. Лендинг — от 45 000 ₽, AI-агент — от 70 000 ₽, веб-приложение — от 130 000 ₽. После первого созвона дам точную цифру — без скрытых доплат.",
+    a: "Цена зависит от задачи. Лендинг — от $500, AI-агент — от $800, веб-приложение — от $1500. После первого созвона дам точную цифру — без скрытых доплат.",
   },
   {
     q: "Как быстро вы можете начать?",
@@ -33,10 +33,6 @@ const FAQS = [
     q: "Как происходит оплата?",
     a: "50% предоплата перед стартом, 50% после сдачи. Работаю через договор или счёт для ИП/компаний.",
   },
-  {
-    q: "У вас нет опыта с реальными клиентами — почему стоит рискнуть?",
-    a: "Честный вопрос. Учебные проекты показывают, что я умею технически. Чтобы снять ваш риск полностью — работаю с гарантией возврата: если результат не устроит, верну деньги без споров. Плюс договор и 50% предоплата — вы не вкладываете всё сразу.",
-  },
 ];
 
 export function Faq() {
@@ -54,7 +50,7 @@ export function Faq() {
         <div className="flex flex-col gap-3">
           {FAQS.map((faq, i) => (
             <motion.div
-              key={faq.q}
+              key={i}
               className={`glass-card overflow-hidden transition-all duration-300 ${open === i ? "border-[var(--color-accent)]/30" : ""}`}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,10 +58,8 @@ export function Faq() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
             >
               <button
-                type="button"
                 className="w-full flex items-center justify-between gap-4 p-6 text-left cursor-pointer"
                 onClick={() => setOpen(open === i ? null : i)}
-                aria-expanded={open === i}
               >
                 <span className="font-semibold text-[var(--color-text)]">{faq.q}</span>
                 <motion.span
@@ -73,7 +67,7 @@ export function Faq() {
                   animate={{ rotate: open === i ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
                 </motion.span>

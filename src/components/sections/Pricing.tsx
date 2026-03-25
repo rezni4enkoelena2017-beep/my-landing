@@ -5,10 +5,12 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/config";
 
+const TELEGRAM_URL = SITE.telegram;
+
 const PLANS = [
   {
     name: "Старт",
-    price: "45 000 ₽",
+    price: "$500",
     period: "один раз",
     desc: "Для тех, кому нужна качественная точка входа в интернет.",
     features: [
@@ -24,7 +26,7 @@ const PLANS = [
   },
   {
     name: "Бизнес",
-    price: "110 000 ₽",
+    price: "$1200",
     period: "один раз",
     desc: "Полноценный сайт или MVP приложения с функциональностью.",
     features: [
@@ -40,7 +42,7 @@ const PLANS = [
   },
   {
     name: "AI-Pro",
-    price: "от 70 000 ₽",
+    price: "от $800",
     period: "проект",
     desc: "AI-агент или автоматизация, которая работает вместо сотрудника.",
     features: [
@@ -67,14 +69,17 @@ export function Pricing() {
           subtitle="Все что входит в проект — обговорено заранее. Цена финальная."
         />
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
               className={`
                 glass-card p-8 flex flex-col gap-6 relative transition-all duration-300
                 hover:shadow-[var(--shadow-glow)]
-                ${plan.featured ? "neon-cycle" : "hover:border-[var(--color-accent)]/20"}
+                ${plan.featured
+                  ? "border-[var(--color-accent)]/40 ring-1 ring-[var(--color-accent)]/20"
+                  : "hover:border-[var(--color-accent)]/20"
+                }
               `}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +112,7 @@ export function Pricing() {
               </ul>
 
               <Button
-                href={SITE.telegram}
+                href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant={plan.featured ? "primary" : "secondary"}
@@ -129,7 +134,7 @@ export function Pricing() {
         >
           Нужен индивидуальный расчёт?{" "}
           <a
-            href={SITE.telegram}
+            href={TELEGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-accent)] hover:underline"
