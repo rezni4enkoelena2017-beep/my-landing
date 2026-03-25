@@ -21,7 +21,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const BASE_URL = "https://my-landing-ld1naf5qo-rezni4enkoelena2017-beeps-projects.vercel.app";
+const BASE_URL = "https://my-landing-neon.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
