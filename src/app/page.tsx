@@ -16,10 +16,16 @@ import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#7c3aed] focus:text-white focus:text-sm focus:font-medium"
+      >
+        Перейти к содержимому
+      </a>
       <SmoothScroll />
       <CursorSpotlight />
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <SocialProof />
         <Services />

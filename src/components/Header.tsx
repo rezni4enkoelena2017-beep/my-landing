@@ -62,6 +62,7 @@ export function Header() {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
+                type="button"
                 onClick={() => handleNavClick(link.href)}
                 className="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors cursor-pointer"
               >
@@ -80,9 +81,11 @@ export function Header() {
 
           {/* Mobile burger */}
           <button
+            type="button"
             className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Открыть меню"
+            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={mobileOpen}
           >
             <span className={`block w-6 h-0.5 bg-[var(--color-text)] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
             <span className={`block w-6 h-0.5 bg-[var(--color-text)] transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
@@ -95,6 +98,9 @@ export function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Навигация"
             className="fixed inset-0 z-40 flex flex-col pt-20 px-6 pb-8 md:hidden"
             style={{ background: "var(--color-bg)" }}
             initial={{ opacity: 0, x: "100%" }}
@@ -106,6 +112,7 @@ export function Header() {
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.href}
+                  type="button"
                   onClick={() => handleNavClick(link.href)}
                   className="text-2xl font-bold text-left text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
                 >
@@ -142,7 +149,7 @@ export function Header() {
 
 function TelegramIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.016 9.503c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.748 4.28 13.854c-.645-.202-.657-.645.136-.955l10.89-4.199c.537-.194 1.008.12.833.955l-.577-.407z" />
     </svg>
   );
