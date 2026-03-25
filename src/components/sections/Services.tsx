@@ -1,40 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
-import { TechTag } from "@/components/ui/TechTag";
 import { SITE } from "@/lib/config";
-
-const TELEGRAM_URL = SITE.telegram;
 
 const SERVICES = [
   {
     icon: "🌐",
-    title: "Сайт / Лендинг",
-    desc: "Конвертирующий лендинг или корпоративный сайт. Быстро, красиво, под ваш бренд.",
-    price: "от $500",
-    deadline: "5–10 дней",
-    tags: ["Next.js", "Tailwind", "CMS"],
+    title: "Сайт, который продаёт",
+    subtitle: "Лендинги · Корпоративные сайты",
+    desc: "Не просто красивая страница — инструмент привлечения клиентов. Быстро, SEO-оптимизировано, с аналитикой с первого дня.",
+    for: "малый бизнес, стартапы, личные бренды",
+    deadline: "от 1 недели",
+    price: "от 40 000 ₽",
+    tags: ["Next.js", "React", "Tailwind", "Figma"],
     featured: false,
-  },
-  {
-    icon: "🤖",
-    title: "AI-агент для бизнеса",
-    desc: "Чат-бот или голосовой агент в Telegram/WhatsApp, который отвечает клиентам 24/7, берёт заявки и передаёт в CRM.",
-    price: "от $800",
-    deadline: "7–14 дней",
-    tags: ["LLM", "Telegram", "CRM", "n8n"],
-    featured: true,
+    wide: false,
   },
   {
     icon: "⚡",
-    title: "Веб-приложение / MVP",
-    desc: "Полноценное SaaS или внутренний инструмент. От прототипа до продакшена за 2–4 недели.",
-    price: "от $1500",
-    deadline: "14–30 дней",
-    tags: ["React", "Node.js", "PostgreSQL"],
+    title: "Приложение под задачу",
+    subtitle: "Веб-приложения · MVP",
+    desc: "Когда готовые SaaS-решения не подходят. MVP за 2–3 недели, полноценный продукт — за 2 месяца.",
+    for: "стартапы, бизнес с уникальными процессами",
+    deadline: "от 2 недель",
+    price: "от 120 000 ₽",
+    tags: ["React", "Next.js", "Supabase", "TypeScript"],
     featured: false,
+    wide: false,
+  },
+  {
+    icon: "🤖",
+    title: "AI-агент вместо сотрудника",
+    subtitle: "AI-агенты · Автоматизация",
+    desc: "Ваш цифровой сотрудник: отвечает клиентам, квалифицирует заявки, обрабатывает данные — 24/7, без выходных. Один агент заменяет 20–40 часов ручной работы в неделю.",
+    for: "бизнес с повторяющимися процессами, отделы продаж и поддержки",
+    deadline: "от 3 дней",
+    price: "от 80 000 ₽",
+    tags: ["GPT-4o", "Claude", "LangChain", "n8n", "Telegram Bot"],
+    featured: true,
+    wide: true,
+  },
+  {
+    icon: "💬",
+    title: "Не знаете с чего начать?",
+    subtitle: "Консультация · Аудит",
+    desc: "30-минутный разбор задачи. Честно скажу: реализуемо ли, сколько займёт и стоит.",
+    for: "",
+    deadline: "",
+    price: "Бесплатно",
+    tags: [],
+    featured: false,
+    wide: false,
+    small: true,
   },
 ];
 
@@ -42,75 +60,87 @@ export function Services() {
   return (
     <section id="services" className="section">
       <div className="container">
-        <SectionTitle
-          tag="Услуги"
-          title="Что я создаю"
-          highlight="под ваш запрос"
-          subtitle="Три ключевых направления — выберите то, что нужно сейчас, или возьмите комплекс."
-        />
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="section-num mb-3">01. Услуги</p>
+          <h2 className="mb-4">
+            Три направления.{" "}
+            <span className="text-[var(--color-text-muted)] font-normal">Один специалист.</span>
+          </h2>
+          <p className="text-[clamp(1rem,1.5vw,1.125rem)] max-w-2xl">
+            Без координации между подрядчиками — вы всегда общаетесь с тем, кто делает работу.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {SERVICES.map((service, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SERVICES.map((s, i) => (
             <motion.div
-              key={service.title}
+              key={s.title}
               className={`
-                relative glass-card p-8 flex flex-col gap-4 transition-all duration-300
-                hover:border-[var(--color-accent)]/40 hover:shadow-[var(--shadow-glow)]
-                ${service.featured ? "border-[var(--color-accent)]/30 ring-1 ring-[var(--color-accent)]/20" : ""}
+                glass-card flex flex-col gap-4 transition-all duration-300
+                hover:border-[var(--color-accent)]/30 hover:shadow-[var(--shadow-glow)]
+                ${s.featured ? "neon-cycle lg:col-span-2" : ""}
+                ${(s as any).small ? "p-6" : "p-8"}
               `}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
             >
-              {service.featured && (
-                <span className="absolute -top-3 left-6 px-3 py-1 bg-[var(--color-accent)] text-white text-xs font-bold rounded-full">
-                  Популярно
+              {s.featured && (
+                <span className="self-start px-3 py-1 rounded-full bg-[var(--color-accent)]/15 border border-[var(--color-accent)]/30 text-xs font-mono font-semibold text-[var(--color-accent)]">
+                  ✦ AI · Premium
                 </span>
               )}
 
-              <div className="text-4xl">{service.icon}</div>
+              <div className="text-4xl">{s.icon}</div>
 
               <div>
-                <h3 className="text-xl font-bold text-[var(--color-text)] mb-2">{service.title}</h3>
-                <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{service.desc}</p>
+                <p className="text-xs font-mono text-[var(--color-text-muted)] mb-1">{s.subtitle}</p>
+                <h3 className="text-[var(--color-text)] mb-2">{s.title}</h3>
+                <p className="text-sm leading-relaxed">{s.desc}</p>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <TechTag key={tag} label={tag} color={service.featured ? "purple" : "neutral"} />
-                ))}
-              </div>
+              {s.for && (
+                <p className="text-xs text-[var(--color-text-muted)] font-mono">
+                  Для: {s.for}
+                </p>
+              )}
 
-              <div className="mt-auto pt-4 border-t border-[var(--color-border)] flex items-center justify-between">
+              {s.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {s.tags.map((tag) => (
+                    <span key={tag} className="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-[var(--color-text-muted)] border border-[var(--color-border)]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-auto pt-4 border-t border-[var(--color-border)] flex items-center justify-between gap-4">
                 <div>
-                  <div className="text-xl font-bold text-[var(--color-text)]">{service.price}</div>
-                  <div className="text-xs text-[var(--color-text-muted)]">{service.deadline}</div>
+                  <div className="font-bold text-[var(--color-text)]">{s.price}</div>
+                  {s.deadline && <div className="text-xs text-[var(--color-text-muted)]">{s.deadline}</div>}
                 </div>
                 <Button
-                  href={TELEGRAM_URL}
+                  href={SITE.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
                   size="sm"
-                  variant={service.featured ? "primary" : "secondary"}
+                  variant={s.featured ? "primary" : "secondary"}
                 >
-                  Обсудить
+                  {(s as any).small ? "Записаться" : "Обсудить →"}
                 </Button>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.p
-          className="text-center text-sm text-[var(--color-text-muted)] mt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          Нужно что-то другое? Напишите — обсудим индивидуально.
-        </motion.p>
       </div>
     </section>
   );

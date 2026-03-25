@@ -1,43 +1,47 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 
 const STEPS = [
   {
     num: "01",
-    title: "Созвон 30 мин",
-    desc: "Разбираем задачу, цели и ожидания. Никаких брифов на 5 страниц — только живой разговор.",
     icon: "💬",
-    duration: "День 1",
+    title: "Консультация",
+    desc: "30 мин, бесплатно. Разбираем задачу без обязательств.",
+    tag: "День 1",
+    note: "Фиксированная цена после брифа — никаких сюрпризов",
   },
   {
     num: "02",
-    title: "Предложение за 24 часа",
-    desc: "Получаете конкретное предложение: что, за сколько, к какому сроку. Без воды и неопределённости.",
     icon: "📋",
-    duration: "День 2",
+    title: "Предложение",
+    desc: "ТЗ + смета + фиксированная цена в договоре за 24 часа.",
+    tag: "День 2",
+    note: "NDA по запросу",
   },
   {
     num: "03",
-    title: "Дизайн и прототип",
-    desc: "Показываю макет до начала разработки. Согласуем всё до последнего пикселя.",
-    icon: "🎨",
-    duration: "День 3–5",
+    icon: "⚡",
+    title: "Разработка",
+    desc: "Спринты по 1 неделе. Еженедельные демо в Telegram — вы видите прогресс.",
+    tag: "День 3–14",
+    note: "Все доступы передаются вам",
   },
   {
     num: "04",
-    title: "Разработка",
-    desc: "Пишу код, настраиваю интеграции, тестирую. Прогресс виден каждый день — не в конце.",
-    icon: "⚡",
-    duration: "День 5–14",
+    icon: "🚀",
+    title: "Запуск",
+    desc: "Тестирование, деплой, передача всех доступов и документации.",
+    tag: "День 14+",
+    note: "",
   },
   {
     num: "05",
-    title: "Сдача и поддержка",
-    desc: "Передаю доступы, провожу по интерфейсу. Поддерживаю первые 30 дней бесплатно.",
-    icon: "🚀",
-    duration: "День 14+",
+    icon: "🔧",
+    title: "Поддержка",
+    desc: "30 дней бесплатно после сдачи. Не бросаю после запуска.",
+    tag: "Ongoing",
+    note: "",
   },
 ];
 
@@ -45,22 +49,29 @@ export function Process() {
   return (
     <section id="process" className="section">
       <div className="container">
-        <SectionTitle
-          tag="Процесс"
-          title="Как мы работаем"
-          highlight="вместе"
-          subtitle="Прозрачность на каждом этапе. Вы всегда знаете, что происходит и когда будет готово."
-        />
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="section-num mb-3">04. Процесс</p>
+          <h2 className="mb-4">Как мы работаем</h2>
+          <p className="text-[clamp(1rem,1.5vw,1.125rem)] max-w-2xl">
+            Понятный процесс. Никакого хаоса. Вы всегда знаете что происходит.
+          </p>
+        </motion.div>
 
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent-2)] to-transparent hidden md:block" />
+          {/* Vertical line — desktop */}
+          <div className="absolute left-[31px] top-8 bottom-8 w-px bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent-2)]/50 to-transparent hidden md:block" />
 
           <div className="flex flex-col gap-6">
             {STEPS.map((step, i) => (
               <motion.div
                 key={step.num}
-                className="relative flex gap-6 md:gap-10"
+                className="relative flex gap-5 md:gap-8"
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -75,14 +86,19 @@ export function Process() {
                 </div>
 
                 {/* Content */}
-                <div className="glass-card p-6 flex-1 hover:border-[var(--color-accent)]/30 transition-colors">
+                <div className="glass-card p-5 flex-1 hover:border-[var(--color-accent)]/20 transition-colors">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
-                    <div>
-                      <h3 className="text-lg font-bold text-[var(--color-text)] mb-2">{step.title}</h3>
-                      <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{step.desc}</p>
+                    <div className="flex-1">
+                      <h3 className="text-[var(--color-text)] mb-1">{step.title}</h3>
+                      <p className="text-sm leading-relaxed">{step.desc}</p>
+                      {step.note && (
+                        <p className="text-xs font-mono text-[var(--color-accent)] mt-2 opacity-80">
+                          ✓ {step.note}
+                        </p>
+                      )}
                     </div>
                     <span className="text-xs font-mono px-3 py-1 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] whitespace-nowrap flex-shrink-0">
-                      {step.duration}
+                      {step.tag}
                     </span>
                   </div>
                 </div>

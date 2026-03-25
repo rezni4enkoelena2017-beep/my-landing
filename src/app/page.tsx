@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
+import { AiDemo } from "@/components/sections/AiDemo";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { About } from "@/components/sections/About";
@@ -24,6 +25,7 @@ export default function Home() {
         <SocialProof />
         <Services />
         <Portfolio />
+        <AiDemo />
         <Process />
         <Testimonials />
         <About />
